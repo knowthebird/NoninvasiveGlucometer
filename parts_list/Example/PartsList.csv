@@ -1,0 +1,20 @@
+﻿Reference ID,Manufacturer  or Supplier Part Number,Description,Manufacturer or Supplier,Quanity, Cost per Unit ,Total Cost,Link
+U1,2796,Adafruit Feather M0 Adalogger,Adafruit,1,$19.95 ,$19.95 ,https://learn.adafruit.com/adafruit-feather-m0-adalogger
+U2,4650,FeatherWing 128x64 OLED,Adafruit,1,$14.95 ,$14.95 ,https://learn.adafruit.com/adafruit-128x64-oled-featherwing
+U3,2884,FeatherWing Proto,Adafruit,1,$4.95 ,$4.95 ,https://www.adafruit.com/product/2884
+P1,2830,12-pin and 16-pin Stacking Headers,Adafruit,1,$1.25 ,$1.25 ,https://www.adafruit.com/product/2830
+S1,2886,12-pin and 16-pin Female Header Set,Adafruit,1,$0.95 ,$0.95 ,https://www.adafruit.com/product/2886
+Q1-Q2,1540031NC6090,Phototransistors 940nm,Würth Elektronik,2,$0.44 ,$0.88 ,https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/1540031NC6090/12366941
+Q3-Q4,BPW85B,PHOTOTRANSISTOR 450 TO 1080 NM,Vishay Semiconductor Opto Division,2,$0.69 ,$1.38 ,https://www.digikey.com/en/products/detail/vishay-semiconductor-opto-division/BPW85B/4071265
+LED1,IR333-A,EMITTER IR 940NM 100MA RADIAL,Everlight Electronics Co Ltd,1,$0.53 ,$0.53 ,https://www.digikey.com/en/products/detail/everlight-electronics-co-ltd/IR333-A/2675571
+LED2,XLUR12D,Red 617nm LED Indication,SunLED,1,$0.28 ,$0.28 ,https://www.digikey.com/en/products/detail/sunled/XLUR12D/4745846
+R1,CF14JT47R0,Resistor 47 Ohm 1/4 Watt 5% Tolerance Through Hole,Stackpole Electronics Inc,1,$0.10 ,$0.10 ,https://www.digikey.com/en/products/detail/stackpole-electronics-inc/CF14JT47R0/1741438
+R2,CF14JT100R,Resistor 100 Ohm 1/4 Watt 5% Tolerance Through Hole,Stackpole Electronics Inc,1,$0.10 ,$0.10 ,https://www.digikey.com/en/products/detail/stackpole-electronics-inc/CF14JT100R/1741261
+Q5-Q12,BC337-40,Bipolar (BJT) Transistor NPN,-,8,0.18,$1.44 ,https://www.digikey.com/en/products/detail/diotec-semiconductor/BC337-40/13164331
+SPR1,540278,"Spring Compression #93 1.125"" long 0.5""od .287mm solid height 5lbs per in",HILLMAN,1,$1.99 ,$1.99 ,https://shop.hillmangroup.com/ccrz__ProductDetails?sku=540278&cclcl=en_US/1000
+CS1-CS2,91290A120,Screw M3 x 16mm Socket Head Steel Black Oxide,McMASTER,2,$0.12 ,$0.24 ,https://www.mcmaster.com/91290A120/
+HN1-HN2,90593A001,Nut M3 Hex Steel Black Oxide ,McMASTER,2,$0.12 ,$0.24 ,https://www.mcmaster.com/90593A001/
+,,Total,,,,49.23,
+,,,,,,,
+,,,,,,,
+,,,,,,,

@@ -1,0 +1,5 @@
+# to allow modifying the examples in the Arduino IDE
+.development
+
+# VS Code files for those working on multiple tools
+.vscode/*
