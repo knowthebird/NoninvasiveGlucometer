@@ -1,8 +1,10 @@
-#include <GlucometerSensor.h>
 #include <GlucometerDisplay.h>
+#include <GlucometerLogger.h>
+#include <GlucometerSensor.h>
 
-GlucometerSensor sensor;
+GlucometerLogger logger;
 GlucometerDisplay display;
+GlucometerSensor sensor;
 
 void setup() {
   uint8_t setup_success = 0;
@@ -28,14 +30,36 @@ void loop() {
     float reading = sensor.GetConcentration_mg_dl();
     display.PrintConcentration_mg_dl(reading);
   } else if (display.log_sd_button_.IsNewPress()) {
-    display.PrintMsg("TODO: LOG DATA ON SD");
-    // TODO(ME): Log Data On SD Card
+    display.PrintMsg("Checking For SD Card");
+    
+    if (logger.Begin()) {
+      display.PrintMsg("SD Card Detected");
+        if (!logger.Open()) {
+          display.PrintMsg("SD Card Detected     Failed To Write File");
+        } else {
+          display.PrintMsg("SD Card Detected     Logging Data");
+          String buffer;
+          logger.Initialize(&buffer);
+          while (display.log_sd_button_.IsPressed()) {
+            buffer += millis();
+            buffer += ", ";
+            buffer += sensor.GetConcentration_mg_dl();
+            buffer += "\r\n";
+            
+            logger.NonBlockingWrite(&buffer);
+          }
+          logger.BlockingWrite(&buffer);
+          display.PrintMsg("SD Card Detected     Logging Data Complete");
+        }
+    } else {
+      display.PrintMsg("SD Card Not Detected");
+    }
   } else if (display.stream_serial_button_.IsNewPress()) {
-    display.PrintMsg("STREAMING SERIAL DATA");
+    display.PrintMsg("Streaming Serial Data");
     while (display.stream_serial_button_.IsPressed()) {
       Serial.println(sensor.GetConcentration_mg_dl());
       delay(1);
     }
-    display.PrintMsg("DONE STREAMING DATA");
+    display.PrintMsg("Done Streaming Data");
   }
 }
