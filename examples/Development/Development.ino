@@ -21,7 +21,8 @@ void setup() {
     display.PrintMsg("Error: Display Init");
   }
 
-  while (!setup_success) {}
+  while (!setup_success) {
+  }
 }
 
 void loop() {
@@ -33,28 +34,32 @@ void loop() {
     display.PrintMsg("Checking For SD Card");
     if (logger.Begin()) {
       display.PrintMsg("SD Card Detected");
-        if (!logger.Open()) {
-          display.PrintMsg("SD Card Detected     Failed To Open File");
-        } else {
-          display.PrintMsg("SD Card Detected     Logging Data");
-          while (display.log_sd_button_.IsPressed()) {
-            sensor.GetConcentration_mg_dl(&logger);
-          }
-          logger.Close();
-          display.PrintMsg("SD Card Detected     Logging Data Complete");
+      if (!logger.Open()) {
+        display.PrintMsg("SD Card Detected     Failed To Open File");
+      } else {
+        display.PrintMsg("SD Card Detected     Logging Data");
+        while (display.log_sd_button_.IsPressed()) {
+          sensor.GetConcentration_mg_dl(&logger);
         }
+        logger.Close();
+        display.PrintMsg("SD Card Detected     Logging Data Complete");
+      }
     } else {
       display.PrintMsg("SD Card Not Detected");
     }
   } else if (display.stream_serial_button_.IsNewPress()) {
     display.PrintMsg("Waiting To Establish Serial Connection");
-    while (!Serial.available()) {
+    while (!Serial.available() && display.stream_serial_button_.IsPressed()) {
       delay(10);
     }
-    display.PrintMsg("Streaming Serial Data");
-    while (display.stream_serial_button_.IsPressed()) {
-      sensor.GetConcentration_mg_dl((HardwareSerial*) &Serial);
+    if (Serial.available()) {
+      display.PrintMsg("Streaming Serial Data");
+      while (display.stream_serial_button_.IsPressed()) {
+        sensor.GetConcentration_mg_dl((HardwareSerial*)&Serial);
+      }
+      display.PrintMsg("Done Streaming Data");
+    } else {
+      display.PrintMsg("Data Stream Cancelled");
     }
-    display.PrintMsg("Done Streaming Data");
   }
 }
