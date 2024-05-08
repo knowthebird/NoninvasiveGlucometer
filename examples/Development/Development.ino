@@ -40,12 +40,17 @@ void loop() {
           while (display.log_sd_button_.IsPressed()) {
             sensor.GetConcentration_mg_dl(&logger);
           }
+          logger.Close();
           display.PrintMsg("SD Card Detected     Logging Data Complete");
         }
     } else {
       display.PrintMsg("SD Card Not Detected");
     }
   } else if (display.stream_serial_button_.IsNewPress()) {
+    display.PrintMsg("Waiting To Establish Serial Connection");
+    while (!Serial.available()) {
+      delay(10);
+    }
     display.PrintMsg("Streaming Serial Data");
     while (display.stream_serial_button_.IsPressed()) {
       sensor.GetConcentration_mg_dl((HardwareSerial*) &Serial);

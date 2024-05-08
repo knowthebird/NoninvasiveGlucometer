@@ -37,6 +37,10 @@ class GlucometerLogger {
     txtFile_.flush();
   }
 
+  void Close() {
+    txtFile_.close();
+  }
+
  private:
   const char filename_[9] = "data.log";
   File txtFile_;

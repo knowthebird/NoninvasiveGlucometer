@@ -14,6 +14,9 @@ class ExampleSensor : GlucometerSensor {
   float GetConcentration_mg_dl(GlucometerLogger* logger);
 
   float GetConcentration_mg_dl(HardwareSerial* serial_ptr);
+
+ private:
+  String buffer_;
 };
 
 #endif  // EXAMPLESENSOR_H_

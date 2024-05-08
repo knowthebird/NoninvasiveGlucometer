@@ -6,29 +6,24 @@
 // const float fs = 150;
 // KickFiltersRT<float> filtersRT;
 
-uint8_t ExampleSensor::Initialize() { return 0; }
+uint8_t ExampleSensor::Initialize() { 
+    buffer_.reserve(1024);
+    return 0; 
+}
 
 float ExampleSensor::GetConcentration_mg_dl() { return 1.0; }
 
 float ExampleSensor::GetConcentration_mg_dl(GlucometerLogger* logger) {
-  String buffer;
-  logger->Initialize(&buffer);
-
   float some_input = 10.0;
-
-  buffer += millis();
-  buffer += ", ";
-  buffer += some_input;
-  buffer += "\r\n";
-  logger->NonBlockingWrite(&buffer);
-
   float concentration = some_input / 10.0;
 
-  buffer += millis();
-  buffer += ", ";
-  buffer += concentration;
-  buffer += "\r\n";
-  logger->BlockingWrite(&buffer);
+  buffer_ += millis();
+  buffer_ += ", ";
+  buffer_ += some_input;
+  buffer_ += ", ";
+  buffer_ += concentration;
+  buffer_ += "\r\n";
+  logger->NonBlockingWrite(&buffer_);
 
   return concentration;
 }
@@ -36,9 +31,12 @@ float ExampleSensor::GetConcentration_mg_dl(GlucometerLogger* logger) {
 float ExampleSensor::GetConcentration_mg_dl(HardwareSerial* serial_ptr) {
   float some_input = 10.0;
   float concentration = some_input / 10.0;
-  if (serial_ptr->available()) {
-    serial_ptr->println(some_input);
-    serial_ptr->println(concentration);
-  }
+
+  serial_ptr->print(millis());
+  serial_ptr->print(", ");
+  serial_ptr->print(some_input);
+  serial_ptr->print(", ");
+  serial_ptr->println(concentration);
+
   return concentration;
 }
