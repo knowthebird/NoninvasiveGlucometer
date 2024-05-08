@@ -39,7 +39,6 @@ class GlucometerLogger {
 
  private:
   const char filename_[9] = "data.log";
-  
   File txtFile_;
 };
 

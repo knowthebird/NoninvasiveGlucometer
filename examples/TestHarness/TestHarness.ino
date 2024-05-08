@@ -1,7 +1,7 @@
-#include <GlucometerSensor.h>
+#include <ExampleSensor.h>
 #include <GlucometerDisplay.h>
 
-GlucometerSensor sensor;
+ExampleSensor sensor;
 GlucometerDisplay display;
 
 const unsigned long kTimeLimit_ms = 5000;
