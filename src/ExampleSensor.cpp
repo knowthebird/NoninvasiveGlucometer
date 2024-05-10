@@ -7,36 +7,59 @@
 // KickFiltersRT<float> filtersRT;
 
 uint8_t ExampleSensor::Initialize() { 
-    buffer_.reserve(1024);
-    return 0; 
+  pinMode(k_led_617_pin_, OUTPUT);
+  digitalWrite(k_led_617_pin_, LOW);
+
+  pinMode(k_led_940_pin_, OUTPUT);
+  digitalWrite(k_led_940_pin_, LOW);
+
+  pinMode(k_PT_R_Vis_pin_, INPUT);
+  pinMode(k_PT_R_940_pin_, INPUT);
+  pinMode(k_PT_T_Vis_pin_, INPUT);
+  pinMode(k_PT_T_940_pin_, INPUT);
+
+  buffer_.reserve(1024);
+  return 0;
 }
 
-float ExampleSensor::GetConcentration_mg_dl() { return 1.0; }
+float ExampleSensor::GetConcentration_mg_dl() { return -1.0; }
 
 float ExampleSensor::GetConcentration_mg_dl(GlucometerLogger* logger) {
-  float some_input = 10.0;
-  float concentration = some_input / 10.0;
+  ReadInputs();
 
-  buffer_ += millis();
-  buffer_ += ", ";
-  buffer_ += some_input;
-  buffer_ += ", ";
-  buffer_ += concentration;
+  buffer_ += PT_R_Vis_Value_;
+  buffer_ += ",";
+  buffer_ += PT_R_940_Value_;
+  buffer_ += ",";
+  buffer_ += PT_T_Vis_Value_;
+  buffer_ += ",";
+  buffer_ += PT_T_940_Value_;
   buffer_ += "\r\n";
   logger->NonBlockingWrite(&buffer_);
 
-  return concentration;
+  return -1.0;
 }
 
 float ExampleSensor::GetConcentration_mg_dl(HardwareSerial* serial_ptr) {
-  float some_input = 10.0;
-  float concentration = some_input / 10.0;
+  ReadInputs();
 
-  serial_ptr->print(millis());
-  serial_ptr->print(", ");
-  serial_ptr->print(some_input);
-  serial_ptr->print(", ");
-  serial_ptr->println(concentration);
+  Serial.print(PT_R_Vis_Value_);
+  Serial.print(",");
+  Serial.print(PT_R_940_Value_);
+  Serial.print(",");
+  Serial.print(PT_T_Vis_Value_);
+  Serial.print(",");
+  Serial.println(PT_T_940_Value_);
 
-  return concentration;
+  return -1.0;
+}
+
+void ExampleSensor::ReadInputs() {
+  PT_R_Vis_Value_ = analogRead(k_PT_R_Vis_pin_);
+  delay(2);
+  PT_R_940_Value_ = analogRead(k_PT_R_940_pin_);
+  delay(2);
+  PT_T_Vis_Value_ = analogRead(k_PT_T_Vis_pin_);
+  delay(2);
+  PT_T_940_Value_ = analogRead(k_PT_T_940_pin_);
 }

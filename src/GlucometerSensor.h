@@ -27,11 +27,9 @@ class GlucometerSensor {
 
   virtual float GetConcentration_mg_dl(HardwareSerial* serial_ptr) {
     float concentration = GetConcentration_mg_dl();
-    if (serial_ptr->available()) {
-      serial_ptr->print(millis());
-      serial_ptr->print(", ");
-      serial_ptr->println(concentration);
-    }
+    serial_ptr->print(millis());
+    serial_ptr->print(", ");
+    serial_ptr->println(concentration);
     return concentration;
   }
 };
