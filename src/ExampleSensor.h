@@ -24,8 +24,8 @@ class ExampleSensor : GlucometerSensor {
 
  private:
   void ReadInputs();
-  void ReadInputs(GlucometerLogger* logger);
-  void ReadInputs(HardwareSerial* serial_ptr);
+  void ReadInputs(GlucometerLogger* logger, uint8_t pin_states);
+  void ReadInputs(HardwareSerial* serial_ptr, uint8_t pin_states);
 
   String buffer_;
   const uint8_t k_led_617_pin_;
