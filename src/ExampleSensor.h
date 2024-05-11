@@ -6,8 +6,8 @@
 class ExampleSensor : GlucometerSensor {
  public:
   ExampleSensor()
-      : k_led_617_pin_(10),
-        k_led_940_pin_(11),
+      : k_led_617_pin_(11),
+        k_led_940_pin_(12),
         k_PT_R_Vis_pin_(A1),
         k_PT_R_940_pin_(A2),
         k_PT_T_Vis_pin_(A3),
@@ -24,6 +24,8 @@ class ExampleSensor : GlucometerSensor {
 
  private:
   void ReadInputs();
+  void ReadInputs(GlucometerLogger* logger);
+  void ReadInputs(HardwareSerial* serial_ptr);
 
   String buffer_;
   const uint8_t k_led_617_pin_;

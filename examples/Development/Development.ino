@@ -62,16 +62,9 @@ void OnSdButtonPress() {
 
 void OnSerialButtonPress() {
   display.PrintMsg("Waiting To Establish Serial Connection");
-  while (!Serial.available() && display.stream_serial_button_.IsPressed()) {
-    delay(10);
-  }
-  if (Serial.available()) {
     display.PrintMsg("Streaming Serial Data");
     while (display.stream_serial_button_.IsPressed()) {
       sensor.GetConcentration_mg_dl((HardwareSerial*)&Serial);
     }
     display.PrintMsg("Done Streaming Data");
-  } else {
-    display.PrintMsg("Data Stream Cancelled");
-  }
 }
