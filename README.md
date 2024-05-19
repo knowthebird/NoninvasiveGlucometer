@@ -3,7 +3,7 @@
 1. [Overview](#overview)
 2. [Prizes](#prizes)
 3. [How To Enter](#how-to-enter)
-4. [Requirements, Rules, Constraints](#requirements,-rules,-constraints)
+4. [Requirements, Rules, Constraints](#requirements-rules-constraints)
 5. [How Entries Will Be Evaluated](#how-entries-will-be-evaluated)
 6. [Example Sensor](#example-sensor)
 7. [Current Competitors](#current-competitors)
