@@ -1,4 +1,3 @@
-# Noninvasive Glucometer
 ## _An Engineering Competition to Design The Most Accurate Noninvasive Glucometer_
 ### Table of Contents
 1. [Overview](#overview)
