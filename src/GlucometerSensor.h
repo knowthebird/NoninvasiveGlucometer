@@ -8,9 +8,10 @@ class GlucometerSensor {
  public:
   GlucometerSensor() {}
 
-  // Return 0 if successful
+  // Return 0 only if sensor successfully initialized
   virtual uint8_t Initialize() = 0;
 
+  // Return the blood glucose level in milligrams per deciliter
   virtual float GetConcentration_mg_dl() = 0;
 
   virtual float GetConcentration_mg_dl(GlucometerLogger* logger) {
