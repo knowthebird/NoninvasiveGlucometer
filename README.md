@@ -7,6 +7,8 @@ This is a competition to design and build the most accurate noninvasive glucomet
 
 The motivation for the competition is to increase the information available to the general public on noninvasive sensors by evaluating the accuracy of different sensor designs and to provide all the information needed to recreate those designs freely.  This is in the hopes that in the near future there may be an afordable sensor which can reliably provide accurate readings, and reduce the pain, cost, and waist associated with typical glucometers.
 
+This repository is setup to also act as an Arduino library.  The design rules are setup such that the sensor should interface like a Wing with an Adafruit Feather.  See https://learn.adafruit.com/adafruit-feather/overview for reference.
+
 The information provided here has not been evaluated by the Food and Drug Administration.  The information provided here is not intended to diagnose, treat, cure, or prevent any disease.
 
 ## Prizes
