@@ -27,7 +27,7 @@ To encourage some friendly competition, the following prizes are offered.  It sh
 ## How To Enter
 Make sure you are looking at the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/. Updates to the compeition and results will be sent to the email address provided in the registration form.
 
-  1. Fill out the RegistrationForm.pdf in this  repository and email it to NoninvasiveGlucometer@gmail.com no later than November 1, 2024. You can enter as an individual or as a team.
+  1. Fill out the [Registration Form](https://forms.gle/nVtzwGYVJsYVfvGZ8) no later than November 1, 2024. You can enter as an individual or as a team.
   2. Withing a few business days, you will receive an email notification that you have been entered into the contest. It will contain instructions for where to mail you sensor, source code, and documentation. (Will be East Coast United States).
   3. Design and build your sensor, following the requirements below.
   4. Mail your package per the instructions you received when you registered such that it arrives no later than December 1, 2024. Your sensor will be sent back to you after the competition is over.
