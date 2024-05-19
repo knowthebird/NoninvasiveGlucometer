@@ -22,6 +22,11 @@ uint8_t ExampleSensor::Initialize() {
   return 0;
 }
 
+uint8_t ExampleSensor::PositionSensor(GlucometerDisplay display) {
+  display.PrintMsg("TODO: Make sure finger is detected...");
+  return 0;
+}
+
 float ExampleSensor::GetConcentration_mg_dl() { return -1.0; }
 
 float ExampleSensor::GetConcentration_mg_dl(GlucometerLogger* logger) {
@@ -42,11 +47,11 @@ float ExampleSensor::GetConcentration_mg_dl(HardwareSerial* serial_ptr) {
   ReadInputs(serial_ptr, 0);
   digitalWrite(k_led_617_pin_, HIGH);
   ReadInputs(serial_ptr, 1);
-  digitalWrite(k_led_940_pin_, HIGH);
+  //digitalWrite(k_led_940_pin_, HIGH);
   ReadInputs(serial_ptr, 2);
-  digitalWrite(k_led_617_pin_, LOW);
+  //digitalWrite(k_led_617_pin_, LOW);
   ReadInputs(serial_ptr, 3);
-  digitalWrite(k_led_940_pin_, LOW);
+  //digitalWrite(k_led_940_pin_, LOW);
   ReadInputs(serial_ptr, 0);
 
   return -1.0;
@@ -89,14 +94,16 @@ void ExampleSensor::ReadInputs(HardwareSerial* serial_ptr, uint8_t pin_states) {
 
   while ((millis() - start_time) < stage_time) {
     ReadInputs();
-    Serial.print(pin_states);
-    Serial.print(",");
-    Serial.print(PT_R_Vis_Value_);
-    Serial.print(",");
-    Serial.print(PT_R_940_Value_);
-    Serial.print(",");
-    Serial.print(PT_T_Vis_Value_);
-    Serial.print(",");
+    // Serial.print(pin_states);
+    // Serial.print(",");
+    // Serial.print(PT_R_Vis_Value_);
+    // Serial.print(",");
+    // Serial.print(PT_R_940_Value_);
+    // Serial.print(",");
+    // Serial.print(PT_T_Vis_Value_);
+    // Serial.print(",");
+    // Serial.println(PT_T_940_Value_);
+
     Serial.println(PT_T_940_Value_);
   }
 }

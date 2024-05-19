@@ -2,6 +2,7 @@
 #define GLUCOMETERSENSOR_H_
 
 #include "Arduino.h"
+#include "GlucometerDisplay.h"
 #include "GlucometerLogger.h"
 
 class GlucometerSensor {
@@ -10,6 +11,9 @@ class GlucometerSensor {
 
   // Return 0 only if sensor successfully initialized
   virtual uint8_t Initialize() = 0;
+
+  // Instruct the User How to Position the Sensor, Return 0 only if successful
+  virtual uint8_t PositionSensor(GlucometerDisplay display) = 0;
 
   // Return the blood glucose level in milligrams per deciliter
   virtual float GetConcentration_mg_dl() = 0;

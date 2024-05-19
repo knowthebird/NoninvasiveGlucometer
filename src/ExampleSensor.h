@@ -16,6 +16,8 @@ class ExampleSensor : GlucometerSensor {
 
   uint8_t Initialize();
 
+  uint8_t PositionSensor(GlucometerDisplay display);
+
   float GetConcentration_mg_dl();
 
   float GetConcentration_mg_dl(GlucometerLogger* logger);

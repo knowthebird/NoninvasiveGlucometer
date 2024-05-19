@@ -1,5 +1,4 @@
 #include <ExampleSensor.h>
-#include <GlucometerDisplay.h>
 
 ExampleSensor sensor;
 GlucometerDisplay display;
@@ -33,16 +32,26 @@ void setup() {
 
 void loop() {
   if (display.read_button_.IsNewPress()) {
-    display.PrintMsg("Glucometer Reading   Sensor");
-
     unsigned long start_time = millis();
-    float reading = sensor.GetConcentration_mg_dl();
+    uint8_t sense_ready = sensor.PositionSensor(display);
     unsigned long end_time = millis();
 
-    if ((end_time - start_time) <= kTimeLimit_ms) {
-      display.PrintConcentration_mg_dl(reading);
-    } else {
+    if ((end_time - start_time) > kTimeLimit_ms) {
       display.PrintMsg("Error: Sensor Timeout");
+    } else if (sense_ready != 0) {
+      display.PrintMsg("Error: Bad Sensor Position");
+    } else {
+      display.PrintMsg("Glucometer Reading   Sensor");
+
+      start_time = millis();
+      float reading = sensor.GetConcentration_mg_dl();
+      end_time = millis();
+
+      if ((end_time - start_time) <= kTimeLimit_ms) {
+        display.PrintConcentration_mg_dl(reading);
+      } else {
+        display.PrintMsg("Error: Sensor Timeout");
+      }
     }
   }
 }

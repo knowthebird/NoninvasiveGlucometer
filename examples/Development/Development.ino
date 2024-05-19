@@ -1,6 +1,4 @@
 #include <ExampleSensor.h>
-#include <GlucometerDisplay.h>
-#include <GlucometerLogger.h>
 
 ExampleSensor sensor;
 GlucometerDisplay display;
@@ -36,9 +34,11 @@ void loop() {
 }
 
 void OnReadButtonPress() {
-  display.PrintMsg("Glucometer Reading   Sensor");
-  float reading = sensor.GetConcentration_mg_dl();
-  display.PrintConcentration_mg_dl(reading);
+  if (sensor.PositionSensor(display) == 0) {
+    display.PrintMsg("Glucometer Reading   Sensor");
+    float reading = sensor.GetConcentration_mg_dl();
+    display.PrintConcentration_mg_dl(reading);
+  }
 }
 
 void OnSdButtonPress() {

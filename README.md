@@ -22,8 +22,9 @@ To encourage some friendly competition, the following prizes are offerred.  It s
 Make sure your looking that the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/.
   1. Fill out the RegistrationForm.pdf in this  repository and email it to NoninvasiveGlucometer@gmail.com no later than November 1, 2024. You can enter as an individual or a team.
   2. You will receive a notifcation you have been entered into the contest, and instructions for where to mail you sensor, source code, and documentation. (Will be East Coast United States).
-  3. Per the instructions, mail your package such that it arrives no later than December 1, 2024.
-  4. The winners and leaderboard will be anounced by Jan 31, 2025.
+  3. Design and build your sensor, following the requirements below.
+  4. Mail your package per the instructions you received when you registered such that it arrives no later than December 1, 2024. Your sensor will be sent back to you after the competition is over.
+  5. The winners and leaderboard will be anounced by Jan 31, 2025.
 
 ## Requirements, Rules, Constraints
 All of the following requirements must be met for the competition.
@@ -49,15 +50,16 @@ All of the following requirements must be met for the competition.
      2. The software must fit and run on an Adafruit Feather M0 Adalogger microcontroller when called in the example TestHarness (Total compiled size less than 262144 bytes).
      3. The software interface must implement the pure virtual methods provided in the GlucometerSensor class of this repository (Initialize and GetConcentration_mg_dl). Overloads may be implemented, but are not required, and will not be used for the competition.
      4. The Initialize() method must contain all logic to intialize and calibrate the sensor, and must return 0 in less than 60 seconds of being called to confirm successful execution.
-     5. The GetConcentration_mg_dl() method must contain all logic to measure and return the users blood glucose level in milligrams per deciliter, and must complete in less than 60 seconds of being called.
+     5. The PositionSensor() method must contain all logic to ensure the sensor is properly positioned on the wrist or finger, and must complete in less than 60 seconds of being called.
+     6. The GetConcentration_mg_dl() method must contain all logic to measure and return the users blood glucose level in milligrams per deciliter, and must complete in less than 60 seconds of being called.
  5. Documentation
      1. All documentation must be provided under the MIT License. By entering the competition you agree all documentation submitted can be shared publicaly under the MIT License with the final results.
      2. All of the following documentation must be provided:
         1. A parts list, containing the following for each component used:
-          a. Supplier
-          b. Part Number
-          c. Quantity Used
-          d. Cost per component
+           a. Supplier
+           b. Part Number
+           c. Quantity Used
+           d. Cost per component
         2. Dimensional drawings or STL files for any custom made mechanical components
         3. A wiring schematic for the sensor
         4. All source code used
