@@ -38,7 +38,7 @@ All of the following requirements must be met for the competition.
   1. Human Interface
      1. The Sensor must not harm the user.
      2. The Sensor must estimate the users blood glucose level in milligrams per deciliter.
-     3. The Sensor must attach to either a finger or a wrist.
+     3. The Sensor must attach to either a finger, wrist, or ear lobe.
      4. The Sensor must not puncture the skin.
   2. SWaP-C
      1. The Sensor must fit in a USPS Small Flat Rate Box (8 5/8″ x 5 3/8″ x 1 5/8").
@@ -56,7 +56,7 @@ All of the following requirements must be met for the competition.
      2. The software must fit and run on an Adafruit Feather M0 Adalogger microcontroller when called in the example TestHarness (Total compiled size less than 262144 bytes).
      3. The software interface must implement the pure virtual methods provided in the GlucometerSensor class of this repository (Initialize, PositionSensor(GlucometerDisplay display), and GetConcentration_mg_dl). Overloads may be implemented, but are not required, and will not be used for the competition.
      4. The Initialize() method must contain all logic to intialize and calibrate the sensor, and must return 0 in less than 60 seconds of being called to confirm successful execution.
-     5. The PositionSensor(GlucometerDisplay display) method must contain all logic to ensure the sensor is properly positioned on the wrist or finger, and must complete in less than 60 seconds of being called.
+     5. The PositionSensor(GlucometerDisplay display) method must contain all logic to ensure the sensor is properly positioned on the user, and must complete in less than 60 seconds of being called.
      6. The GetConcentration_mg_dl() method must contain all logic to measure and return the users blood glucose level in milligrams per deciliter, and must complete in less than 60 seconds of being called.
  5. Documentation
      1. All documentation must be provided under the MIT License. By entering the competition you agree all documentation submitted can be shared publicaly under the MIT License with the final results.
