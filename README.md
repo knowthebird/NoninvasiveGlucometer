@@ -1,6 +1,13 @@
 # Noninvasive Glucometer
 ## _An Engineering Competition to Design The Most Accurate Noninvasive Glucometer_
-
+### Table of Contents
+1. [Overview](#overview)
+2. [Prizes](#prizes)
+3. [How To Enter](#how-to-enter)
+4. [Requirements, Rules, Constraints](#requirements,-rules,-constraints)
+5. [How Entries Will Be Evaluated](#how-entries-will-be-evaluated)
+6. [Example Sensor](#example-sensor)
+7. [Current Competitors](#current-competitors)
 
 ## Overview
 This is a competition to design and build the most accurate noninvasive glucometer sensor. 
@@ -71,7 +78,7 @@ All entries will be evaluated using the same methods.  The method used will not 
 ## Example Sensor
 I will be working on an example sensor while the competition is running and will update this repository as I make updates.  The example sensor will not be eligable to win any of the prizes.  You are not competing with the example.  It is just provided for reference on how things can be implemented, and will show what I am working on.
 
-## Competitors as of 5/18/2024
+## Current Competitors
 | Alias or Team Name | Individual or Team | School, Business, or Organization |
 | :--------- | :-------- | :------- |
 | None yet   | None yet  | None yet |
