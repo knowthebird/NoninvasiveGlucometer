@@ -11,14 +11,14 @@
 ## Overview
 This is a competition to design and build the most accurate noninvasive glucometer sensor. 
 
-The motivation for the competition is to increase the information available to the general public on noninvasive sensors by evaluating the accuracy of different sensor designs and to provide all the information needed to recreate those designs freely.  This is in the hopes that in the near future there may be an afordable sensor which can reliably provide accurate readings, and reduce the pain, cost, and waist associated with typical glucometers.
+The motivation for the competition is to increase the information available to the general public on noninvasive sensors by evaluating the accuracy of different sensor designs and to provide all the information needed to recreate those designs freely.  This is in the hopes that in the near future there may be an affordable sensor which can reliably provide accurate readings, and reduce the pain, cost, and waist associated with typical glucometers.
 
 This repository is setup to also act as an Arduino library.  The design rules are setup such that the sensor should interface like a Wing with an Adafruit Feather.  See https://learn.adafruit.com/adafruit-feather/overview for reference.
 
 The information provided here has not been evaluated by the Food and Drug Administration.  The information provided here is not intended to diagnose, treat, cure, or prevent any disease.
 
 ## Prizes
-To encourage some friendly competition, the following prizes are offerred.  It should be noted though, that all competitors are contributing to the informaiton available to the general public.  Knowing both what works well, and what does not, is of benefit to the public.
+To encourage some friendly competition, the following prizes are offered.  It should be noted though, that all competitors are contributing to the information available to the general public.  Knowing both what works well, and what does not, is of benefit to the public.
  - First Place $1000
  - Second Place $500
  - Third Place $250
@@ -27,10 +27,10 @@ To encourage some friendly competition, the following prizes are offerred.  It s
 ## How To Enter
 Make sure your looking that the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/.
   1. Fill out the RegistrationForm.pdf in this  repository and email it to NoninvasiveGlucometer@gmail.com no later than November 1, 2024. You can enter as an individual or a team.
-  2. You will receive a notifcation you have been entered into the contest, and instructions for where to mail you sensor, source code, and documentation. (Will be East Coast United States).
+  2. You will receive a notification you have been entered into the contest, and instructions for where to mail you sensor, source code, and documentation. (Will be East Coast United States).
   3. Design and build your sensor, following the requirements below.
   4. Mail your package per the instructions you received when you registered such that it arrives no later than December 1, 2024. Your sensor will be sent back to you after the competition is over.
-  5. The winners and leaderboard will be anounced by Jan 31, 2025.
+  5. The winners and leaderboard will be announced by Jan 31, 2025.
 
 ## Requirements, Rules, Constraints
 All of the following requirements must be met for the competition.
@@ -52,30 +52,30 @@ All of the following requirements must be met for the competition.
      4. The Sensor must not require physical modifications to the Adafruit Feather M0 Adalogger microcontroller or Adafruit 128x64 OLED FeatherWing.
      5. The Sensor must not damage the Adafruit Feather M0 Adalogger microcontroller or Adafruit 128x64 OLED FeatherWing.
   4. Software Interface
-     1. The software repository must use this repositories structure and continue to function as an Arduino library.
+     1. The software repository must use this repository's structure and continue to function as an Arduino library.
      2. The software must fit and run on an Adafruit Feather M0 Adalogger microcontroller when called in the example TestHarness (Total compiled size less than 262144 bytes).
      3. The software interface must implement the pure virtual methods provided in the GlucometerSensor class of this repository (Initialize, PositionSensor(GlucometerDisplay display), and GetConcentration_mg_dl). Overloads may be implemented, but are not required, and will not be used for the competition.
-     4. The Initialize() method must contain all logic to intialize and calibrate the sensor, and must return 0 in less than 60 seconds of being called to confirm successful execution.
+     4. The Initialize() method must contain all logic to initialize and calibrate the sensor, and must return 0 in less than 60 seconds of being called to confirm successful execution.
      5. The PositionSensor(GlucometerDisplay display) method must contain all logic to ensure the sensor is properly positioned on the user, and must complete in less than 60 seconds of being called.
      6. The GetConcentration_mg_dl() method must contain all logic to measure and return the users blood glucose level in milligrams per deciliter, and must complete in less than 60 seconds of being called.
  5. Documentation
-     1. All documentation must be provided under the MIT License. By entering the competition you agree all documentation submitted can be shared publicaly under the MIT License with the final results.
+     1. All documentation must be provided under the MIT License. By entering the competition, you agree all documentation submitted can be shared publicaly under the MIT License with the final results.
      2. All of the following documentation must be provided:
         1. A parts list, containing the following for each component used:
            a. Supplier
            b. Part Number
            c. Quantity Used
-           d. Cost per component
-        2. Dimensional drawings or STL files for any custom made mechanical components
-        3. A wiring schematic for the sensor
-        4. All source code used
-    3. Your documentation does not need to be shared publically before the final results and winners are announced. If you share it you are agreeing to allow competitors to use it. It is your responsibility to protect your documentation before then if that is not desired.
+           d. Cost per component.
+        2. Dimensional drawings or STL files for any custom made mechanical components.
+        3. A wiring schematic for the sensor.
+        4. All source code used.
+    3. Your documentation does not need to be shared publicly before the final results and winners are announced. If you share it, you agree to allow competitors to use it. It is your responsibility to protect your documentation before then if that is not desired.
 
 ## How Entries Will Be Evaluated
 All entries will be evaluated using the same methods.  The method used will not be shared prior to the results being announced.  Any additional information will be added to this section in the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/
 
 ## Example Sensor
-I will be working on an example sensor while the competition is running and will update this repository as I make updates.  The example sensor will not be eligable to win any of the prizes.  You are not competing with the example.  It is just provided for reference on how things can be implemented, and will show what I am working on.
+I will be working on an example sensor while the competition is running and will update this repository as I make updates.  The example sensor will not be eligible to win any of the prizes.  You are not competing with the example.  It is just provided for reference on how things can be implemented and will show what I am working on.
 
 ## Current Competitors
 | Alias or Team Name | Individual or Team | School, Business, or Organization |
