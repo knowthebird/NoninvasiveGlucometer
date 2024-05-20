@@ -1,4 +1,4 @@
-## _An Engineering Competition to Design The Most Accurate Noninvasive Glucometer_
+## _An Engineering Competition to Design and Build The Most Accurate Noninvasive Glucometer_
 ### Table of Contents
 1. [Overview](#overview)
 2. [Prizes](#prizes)
