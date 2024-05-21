@@ -1,0 +1,1 @@
+FIngerClampBase.stl and FingerClampTop.stl modified from https://www.thingiverse.com/thing:2052975 by Drasko (https://www.thingiverse.com/drasko/designs). Original provided under the under the Creative Commons - Attribution license, CC BY, https://creativecommons.org/licenses/by/4.0/
