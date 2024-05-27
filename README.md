@@ -69,7 +69,7 @@ All of the following requirements must be met for the competition.
     3. Your documentation does not need to be shared publicly before the final results and winners are announced. If you share it, you agree to allow competitors to use it. It is your responsibility to protect your documentation before then if that is not desired.
 
 ## How Entries Will Be Evaluated
-All entries will be evaluated using the same methods.  The method used will not be shared prior to the results being announced.  Any additional information will be added to this section in the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/
+All entries will be evaluated using the same methods.  The exact method used will not be shared prior to the results being announced. Accuracy will be evaluated relative to a commercial blood based glucometer. Any additional information will be added to this section in the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/
 
 ## Example Sensor
 I will be working on an example sensor while the competition is running and will update this repository as I make updates.  The example sensor will not be eligible to win any of the prizes.  You are not competing with the example.  It is just provided for reference on how things can be implemented and will show what I am working on.
