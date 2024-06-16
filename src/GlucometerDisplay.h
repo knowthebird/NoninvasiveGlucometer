@@ -14,7 +14,7 @@ class Button {
  public:
   Button(const uint8_t k_button_pin,
          const uint8_t k_button_mode = INPUT,
-         const unsigned long k_debounce_delay_ms = 50)
+         const unsigned long k_debounce_delay_ms = 60)
       : k_button_pin_(k_button_pin),
         k_button_mode_(k_button_mode),
         k_debounce_delay_ms_(k_debounce_delay_ms),

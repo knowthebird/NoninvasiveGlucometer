@@ -18,32 +18,76 @@ class GlucometerLogger {
     return SD.begin(chipSelect);
   }
 
-  uint8_t Open() {
-    txtFile_ = SD.open(filename_, FILE_WRITE);
-    return txtFile_;
+  int Open() {
+    char file_name[12];
+    int log_number = GetLastLogNumber() + 1;
+    if (log_number <= 999) {
+      snprintf(file_name, sizeof(file_name), "%s%d%s",
+               prefix_, log_number, file_type_);
+      txt_file_ = SD.open(file_name, FILE_WRITE);
+    }
+    return static_cast<int>(txt_file_);
   }
 
   void NonBlockingWrite(String* buffer) {
-    unsigned int chunkSize = txtFile_.availableForWrite();
+    unsigned int chunkSize = txt_file_.availableForWrite();
     if (chunkSize && buffer->length() >= chunkSize) {
-        txtFile_.write(buffer->c_str(), chunkSize);
+        txt_file_.write(buffer->c_str(), chunkSize);
         buffer->remove(0, chunkSize);
     }
   }
 
   void BlockingWrite(String* buffer) {
-    txtFile_.write(buffer->c_str(), buffer->length());
+    txt_file_.write(buffer->c_str(), buffer->length());
     buffer->remove(0, buffer->length());
-    txtFile_.flush();
+    txt_file_.flush();
   }
 
   void Close() {
-    txtFile_.close();
+    txt_file_.close();
+  }
+
+  char *GetFilename() {
+    return txt_file_.name();
   }
 
  private:
-  const char filename_[9] = "data.log";
-  File txtFile_;
+  const char *prefix_ = "Log_";
+  const char *file_type_ = ".csv";
+  File txt_file_;
+
+
+  int GetLastLogNumber() {
+    File dir = SD.open("/");
+    File current_file =  dir.openNextFile();
+    int log_counter = 0;
+
+    while (current_file) {
+      char *current_filename = current_file.name();
+
+      // remove file extension
+      char *end = current_filename + strlen(current_filename);
+      while (end > current_filename && *end != '.') {
+          --end;
+      }
+      if (end > current_filename) {
+          *end = '\0';
+      }
+
+      // ignore prefix
+      char *log_number_str = current_filename + strlen(prefix_);
+
+      // Check if newer log number
+      int log_number = atoi(log_number_str);
+      if (log_number > log_counter) {
+        log_counter = log_number;
+      }
+
+      current_file.close();
+      current_file = dir.openNextFile();
+    }  // while
+    return log_counter;
+  }  // GetLastLogNumber
 };
 
 #endif  // GLUCOMETERLOGGER_H_

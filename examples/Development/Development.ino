@@ -51,11 +51,11 @@ void OnSdButtonPress() {
       display.PrintMsg("SD Card Detected     Failed To Open File");
     } else {
       display.PrintMsg("SD Card Detected     Logging Data");
-      while (display.log_sd_button_.IsPressed()) {
-        sensor.GetConcentration_mg_dl(&logger);
-      }
+      sensor.GetConcentration_mg_dl(&logger);
+      char display_msg[63];
+      snprintf(display_msg, sizeof(display_msg), "SD Card Detected     Logging Data CompleteSaved to %s", logger.GetFilename());
+      display.PrintMsg(display_msg);
       logger.Close();
-      display.PrintMsg("SD Card Detected     Logging Data Complete");
     }
   }
 }
