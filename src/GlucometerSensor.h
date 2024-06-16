@@ -37,6 +37,8 @@ class GlucometerSensor {
     serial_ptr->println(concentration);
     return concentration;
   }
+
+  virtual ~GlucometerSensor() {}
 };
 
 #endif  // GLUCOMETERSENSOR_H_

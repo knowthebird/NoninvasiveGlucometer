@@ -51,6 +51,8 @@ class GlucometerLogger {
     return txt_file_.name();
   }
 
+  virtual ~GlucometerLogger() {}
+
  private:
   const char *prefix_ = "Log_";
   const char *file_type_ = ".csv";

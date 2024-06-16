@@ -48,6 +48,8 @@ class Button {
     return ((prev_state != button_state_) && (button_state_));
   }
 
+  virtual ~Button() {}
+
  private:
   const uint8_t k_button_pin_;
   const uint8_t k_button_mode_;
@@ -95,6 +97,8 @@ class GlucometerDisplay {
     display_.println(" mmol/L");
     display_.display();
   }
+
+  virtual ~GlucometerDisplay() {}
 
   Button read_button_;
   Button log_sd_button_;

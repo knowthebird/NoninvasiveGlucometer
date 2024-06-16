@@ -25,6 +25,8 @@ class ExampleSensor : GlucometerSensor {
 
   float GetConcentration_mg_dl(HardwareSerial* serial_ptr);
 
+  virtual ~ExampleSensor() {}
+
  private:
   void ReadInputs();
   void ReadInputs(GlucometerLogger* logger, uint8_t pin_states);
