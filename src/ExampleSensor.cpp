@@ -26,7 +26,7 @@ float ExampleSensor::GetConcentration_mg_dl() {
 }
 
 float ExampleSensor::GetConcentration_mg_dl(GlucometerLogger* logger) {
-  buffer_ = "Micros,Pin_State,R_Vis_Value,R_940_Valu_,T_Vis_Value,T_940_Value\r\n";
+  buffer_ = "Micros,Pin_State,R_Vis_Value,R_940_Value,T_Vis_Value,T_940_Value\r\n";
   digitalWrite(k_led_940_pin_, LOW);
   digitalWrite(k_led_617_pin_, LOW);
   ReadInputs(logger, 0);
