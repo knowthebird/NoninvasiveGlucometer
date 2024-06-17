@@ -21,6 +21,8 @@ class ExampleSensor : GlucometerSensor {
 
   float GetConcentration_mg_dl();
 
+  float LogAsBinary(GlucometerLogger* logger);
+
   float LogAsCsv(GlucometerLogger* logger);
 
   float LogAsSerial(HardwareSerial* serial_ptr);
@@ -29,6 +31,7 @@ class ExampleSensor : GlucometerSensor {
 
  private:
   void ReadInputs();
+  void ReadToBinary(GlucometerLogger* logger, uint8_t pin_states);
   void ReadToCsv(GlucometerLogger* logger, uint8_t pin_states);
   void ReadToSerial(HardwareSerial* serial_ptr, uint8_t pin_states);
 
@@ -44,6 +47,7 @@ class ExampleSensor : GlucometerSensor {
   uint16_t PT_R_940_Value_;
   uint16_t PT_T_Vis_Value_;
   uint16_t PT_T_940_Value_;
+  uint8_t crc_table_[256];
 };
 
 #endif  // EXAMPLESENSOR_H_
