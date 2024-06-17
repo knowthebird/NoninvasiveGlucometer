@@ -1,6 +1,7 @@
 #include "ExampleSensor.h"
 
 uint8_t ExampleSensor::Initialize() {
+  analogReadResolution(12);  // For ATSAMD21G18 ARM Cortex M0
   pinMode(k_led_617_pin_, OUTPUT);
   digitalWrite(k_led_617_pin_, LOW);
 
@@ -25,32 +26,32 @@ float ExampleSensor::GetConcentration_mg_dl() {
   return -1.0;  // TODO(KnowTheBird): Process Data
 }
 
-float ExampleSensor::GetConcentration_mg_dl(GlucometerLogger* logger) {
+float ExampleSensor::LogAsCsv(GlucometerLogger* logger) {
   buffer_ = "Micros,Pin_State,R_Vis_Value,R_940_Value,T_Vis_Value,T_940_Value\r\n";
   digitalWrite(k_led_940_pin_, LOW);
   digitalWrite(k_led_617_pin_, LOW);
-  ReadInputs(logger, 0);
+  ReadToCsv(logger, 0);
   digitalWrite(k_led_940_pin_, HIGH);
-  ReadInputs(logger, 1);
+  ReadToCsv(logger, 1);
   digitalWrite(k_led_617_pin_, HIGH);
-  ReadInputs(logger, 2);
+  ReadToCsv(logger, 3);
   digitalWrite(k_led_940_pin_, LOW);
-  ReadInputs(logger, 3);
+  ReadToCsv(logger, 2);
   digitalWrite(k_led_617_pin_, LOW);
   logger->BlockingWrite(&buffer_);
   return -1.0;  // TODO(KnowTheBird): Process Data
 }
 
-float ExampleSensor::GetConcentration_mg_dl(HardwareSerial* serial_ptr) {
+float ExampleSensor::LogAsSerial(HardwareSerial* serial_ptr) {
   digitalWrite(k_led_617_pin_, LOW);
   digitalWrite(k_led_940_pin_, LOW);
-  ReadInputs(serial_ptr, 0);
+  ReadToSerial(serial_ptr, 0);
   digitalWrite(k_led_940_pin_, HIGH);
-  ReadInputs(serial_ptr, 1);
+  ReadToSerial(serial_ptr, 1);
   digitalWrite(k_led_617_pin_, HIGH);
-  ReadInputs(serial_ptr, 2);
+  ReadToSerial(serial_ptr, 3);
   digitalWrite(k_led_940_pin_, LOW);
-  ReadInputs(serial_ptr, 3);
+  ReadToSerial(serial_ptr, 2);
   digitalWrite(k_led_617_pin_, LOW);
 
   return -1.0;  // TODO(KnowTheBird): Process Data
@@ -63,12 +64,14 @@ void ExampleSensor::ReadInputs() {
   PT_T_940_Value_ = analogRead(k_PT_T_940_pin_);
 }
 
-void ExampleSensor::ReadInputs(GlucometerLogger* logger, uint8_t pin_states) {
-  unsigned long start_time = millis();
+void ExampleSensor::ReadToCsv(GlucometerLogger* logger, uint8_t pin_states) {
+  uint32_t start_time = micros();
+  uint32_t current_time = start_time;
 
-  while ((millis() - start_time) < k_stage_time_ms_) {
-    buffer_ += micros();
+  while ((current_time - start_time) < k_stage_time_us_) {
+    current_time = micros();
     ReadInputs();
+    buffer_ += current_time;
     buffer_ += ",";
     buffer_ += pin_states;
     buffer_ += ",";
@@ -84,12 +87,14 @@ void ExampleSensor::ReadInputs(GlucometerLogger* logger, uint8_t pin_states) {
   }
 }
 
-void ExampleSensor::ReadInputs(HardwareSerial* serial_ptr, uint8_t pin_states) {
-  unsigned long start_time = millis();
+void ExampleSensor::ReadToSerial(HardwareSerial* serial_ptr, uint8_t pin_states) {
+  uint32_t start_time = micros();
+  uint32_t current_time = start_time;
 
-  while ((millis() - start_time) < k_stage_time_ms_) {
-    Serial.print(micros());
+  while ((current_time - start_time) < k_stage_time_us_) {
+    current_time = micros();
     ReadInputs();
+    Serial.print(current_time);
     Serial.print(",");
     Serial.print(pin_states);
     Serial.print(",");

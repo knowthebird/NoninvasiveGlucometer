@@ -6,7 +6,7 @@
 class ExampleSensor : GlucometerSensor {
  public:
   ExampleSensor()
-      : k_stage_time_ms_(20000),
+      : k_stage_time_us_(20000000),
         k_led_617_pin_(11),
         k_led_940_pin_(12),
         k_PT_R_Vis_pin_(A1),
@@ -21,19 +21,19 @@ class ExampleSensor : GlucometerSensor {
 
   float GetConcentration_mg_dl();
 
-  float GetConcentration_mg_dl(GlucometerLogger* logger);
+  float LogAsCsv(GlucometerLogger* logger);
 
-  float GetConcentration_mg_dl(HardwareSerial* serial_ptr);
+  float LogAsSerial(HardwareSerial* serial_ptr);
 
   virtual ~ExampleSensor() {}
 
  private:
   void ReadInputs();
-  void ReadInputs(GlucometerLogger* logger, uint8_t pin_states);
-  void ReadInputs(HardwareSerial* serial_ptr, uint8_t pin_states);
+  void ReadToCsv(GlucometerLogger* logger, uint8_t pin_states);
+  void ReadToSerial(HardwareSerial* serial_ptr, uint8_t pin_states);
 
   String buffer_;
-  const unsigned long k_stage_time_ms_;
+  const uint32_t k_stage_time_us_;
   const uint8_t k_led_617_pin_;
   const uint8_t k_led_940_pin_;
   const uint8_t k_PT_R_Vis_pin_;

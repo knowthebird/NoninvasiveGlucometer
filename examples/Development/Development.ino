@@ -51,7 +51,7 @@ void OnSdButtonPress() {
       display.PrintMsg("SD Card Detected     Failed To Open File");
     } else {
       display.PrintMsg("SD Card Detected     Logging Data");
-      sensor.GetConcentration_mg_dl(&logger);
+      sensor.LogAsCsv(&logger);
       char display_msg[63];
       snprintf(display_msg, sizeof(display_msg), "SD Card Detected     Logging Data CompleteSaved to %s", logger.GetFilename());
       display.PrintMsg(display_msg);
@@ -60,11 +60,10 @@ void OnSdButtonPress() {
   }
 }
 
-void OnSerialButtonPress() {
-  display.PrintMsg("Waiting To Establish Serial Connection");
-    display.PrintMsg("Streaming Serial Data");
-    while (display.stream_serial_button_.IsPressed()) {
-      sensor.GetConcentration_mg_dl((HardwareSerial*)&Serial);
-    }
-    display.PrintMsg("Done Streaming Data");
+void OnSerialButtonPress() {   
+  display.PrintMsg("Streaming Serial Data");
+  while (display.stream_serial_button_.IsPressed()) {
+    sensor.LogAsSerial((HardwareSerial*)&Serial);
+  }
+  display.PrintMsg("Done Streaming Data");
 }
