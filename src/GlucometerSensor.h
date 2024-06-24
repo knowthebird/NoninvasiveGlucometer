@@ -20,21 +20,17 @@ class GlucometerSensor {
 
   virtual float GetConcentration_mg_dl(GlucometerLogger* logger) {
     float concentration = GetConcentration_mg_dl();
-    String buffer;
-    buffer.reserve(4+3+4+3);
-    buffer += millis();
-    buffer += ", ";
-    buffer += concentration;
-    buffer += "\r\n";
-    logger->BlockingWrite(&buffer);
+    char log_text[25];
+    snprintf(log_text, sizeof(log_text), "%d, %6.2f\r\n", millis(), concentration);
+    logger->BlockingWrite(log_text);
     return concentration;
   }
 
   virtual float GetConcentration_mg_dl(HardwareSerial* serial_ptr) {
     float concentration = GetConcentration_mg_dl();
-    serial_ptr->print(millis());
-    serial_ptr->print(", ");
-    serial_ptr->println(concentration);
+    char log_text[25];
+    snprintf(log_text, sizeof(log_text), "%d, %6.2f\r\n", millis(), concentration);
+    serial_ptr->print(log_text);
     return concentration;
   }
 

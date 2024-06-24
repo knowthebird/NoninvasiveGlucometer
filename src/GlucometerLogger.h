@@ -24,26 +24,27 @@ class GlucometerLogger {
     if (log_number <= 999) {
       snprintf(file_name, sizeof(file_name), "%s%d%s",
                prefix_, log_number, file_type_);
-      txt_file_ = SD.open(file_name, FILE_WRITE);
+      txt_file_ = SD.open(file_name, O_CREAT | O_WRITE);
     }
     return static_cast<int>(txt_file_);
   }
 
-  void NonBlockingWrite(String* buffer) {
-    unsigned int chunkSize = txt_file_.availableForWrite();
-    if (chunkSize && buffer->length() >= chunkSize) {
-        txt_file_.write(buffer->c_str(), chunkSize);
-        buffer->remove(0, chunkSize);
-    }
+  void Print(char *log_text) {
+    txt_file_.print(log_text);
   }
 
-  void BlockingWrite(String* buffer) {
-    txt_file_.write(buffer->c_str(), buffer->length());
-    buffer->remove(0, buffer->length());
+  void BlockingWrite(char *log_text) {
+    txt_file_.print(log_text);
+    txt_file_.flush();
+  }
+
+  void BlockingWrite(uint8_t* buffer, uint16_t buffer_length) {
+    txt_file_.write(buffer, buffer_length);
     txt_file_.flush();
   }
 
   void Close() {
+    txt_file_.flush();
     txt_file_.close();
   }
 
