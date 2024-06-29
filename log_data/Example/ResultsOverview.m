@@ -1,3 +1,6 @@
+% Used for getting a big picture overview of correlations between
+% sensor readings and Blood Glucose levels.
+
 value = "R_940_Value";
 
 [idx]=find((LogData.("Person")==1) &(LogData.("IndexFinger")==1));
