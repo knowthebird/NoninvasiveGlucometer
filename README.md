@@ -72,7 +72,12 @@ All of the following requirements must be met for the competition.
 All entries will be evaluated using the same methods.  The exact method used will not be shared prior to the results being announced. Accuracy will be evaluated relative to a commercial blood based glucometer. Any additional information will be added to this section in the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/
 
 ## Example Sensor
-I will be working on an example sensor while the competition is running and will update this repository as I make updates.  The example sensor will not be eligible to win any of the prizes.  You are not competing with the example.  It is just provided for reference on how things can be implemented and will show what I am working on.
+I will be working on an example sensor while the competition is running and will update this repository as I make updates.  The example sensor will not be eligible to win any of the prizes.  You are not competing with the example.  It is just provided for reference on how things could be implemented and will show what I am working on.
+
+<p float="left">
+  <img src="mechanical/Example/assembled.jpg" width="300" />
+  <img src="mechanical/Example/disassembled.jpg" width="300" />
+</p>
 
 ## Current Competitors
 | Alias or Team Name | Individual or Team | School, Business, or Organization |
