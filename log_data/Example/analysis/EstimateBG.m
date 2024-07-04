@@ -1,54 +1,67 @@
 % WIP for post processing log data to see correlations between the 
 % sensor readings and bloog glucose level.  
-% No feature extraction used here, It is roughly based on/referencing
-% https://www.ijltet.org/journal/151486536919.%2065.pdf and performing in 
-% post processing what was done on hardware.  
 
-NewLogData = LogData;
+% No PPG feature extraction used here. 
+% It can be used to roughly recreate in post processing what was done on 
+% hardware in https://www.ijltet.org/journal/151486536919.%2065.pdf or
+% to just try different filtering effects
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Process Raw Sensor Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LogDataCopy = LogData;
 for PinState=0:3
     for LogNumber=1:72
         [idx]=find((LogData.("LogNumber")==LogNumber) & (LogData.("Pin_State")==PinState));
-        TempSensorData=LogData.("T_940_Value")(idx);
+        RawSensorReadings=LogData.("T_940_Value")(idx);
         
-        %TempSensorData=detrend(TempSensorData,5);
-        TempSensorData=highpass(TempSensorData,2.34,300);
-        TempSensorData=lowpass(TempSensorData,149,300);
-        %TempSensorData=smoothdata(TempSensorData,"movmean");
-        TempSensorData=mean(TempSensorData);
+        ProcessedSensorReadings=detrend(RawSensorReadings,5);
+        %ProcessedSensorReadings=highpass(ProcessedSensorReadings,2.34,300);
+        ProcessedSensorReadings=lowpass(ProcessedSensorReadings,50,300);
+        ProcessedSensorReadings=smoothdata(ProcessedSensorReadings,"movmean");
+        ProcessedSensorReadings=mean(ProcessedSensorReadings);
         
-        NewLogData.("T_940_Value")(idx) = TempSensorData;
+        LogDataCopy.("T_940_Value")(idx) = ProcessedSensorReadings;
     end
 end
 
-coefficients = [];
-for PinState = 0:3
-    [idx]=find((NewLogData.("Person")==1) &(NewLogData.("IndexFinger")==1) & (NewLogData.("Pin_State")==PinState));
-    TempSensorData=NewLogData.("T_940_Value")(idx);
-    %TempSensorData=filloutliers(TempSensorData,"clip");
+[idx]=find((LogDataCopy.("Person")==1) &(LogDataCopy.("IndexFinger")==1) & (LogDataCopy.("Pin_State")==2));
+ProcessedSensorReadings=LogDataCopy.("T_940_Value")(idx);
+%ProcessedSensorReadings=filloutliers(ProcessedSensorReadings,"clip");
 
-    TempBgData=mean([NewLogData.("PreLog-mean-BG-mg-dl"),NewLogData.("PostLog-mean-BG-mg-dl")],2);
-    TempBgData=TempBgData(idx);
-    r = corrcoef(TempSensorData, TempBgData);
-    coefficients = [coefficients, r(1,2)];
-end
-coefficients
+ReferenceBgReadings=mean([LogDataCopy.("PreLog-mean-BG-mg-dl"),LogDataCopy.("PostLog-mean-BG-mg-dl")],2);
+ReferenceBgReadings=ReferenceBgReadings(idx);
 
-[idx]=find((NewLogData.("Person")==1) &(NewLogData.("IndexFinger")==1) & (NewLogData.("Pin_State")==2));
-TempSensorData=NewLogData.("T_940_Value")(idx);
-TempSensorData=filloutliers(TempSensorData,"clip");
+% Timestamps=LogDataCopy.("Micros")(idx);
 
-TempBgData=mean([NewLogData.("PreLog-mean-BG-mg-dl"),NewLogData.("PostLog-mean-BG-mg-dl")],2);
-TempBgData=TempBgData(idx);
-%r = corrcoef(TempSensorData, TempBgData)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fit Polynomial to Processed Sensor Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% TimeData=NewLogData.("Micros")(idx);
-% scatter(TempSensorData,TempBgData)
+p = polyfit(ProcessedSensorReadings,ReferenceBgReadings,2);
+ReferenceBgData = unique(ReferenceBgReadings);
+PredictedBgData = polyval(p,unique(ProcessedSensorReadings));
 
-p = polyfit(TempSensorData,TempBgData,2)
-x1 = linspace(-1.2,.03);
-y1 = polyval(p,x1);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Evaluate and Display Results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 figure
-plot(TempSensorData,TempBgData,'o')
+plot(ProcessedSensorReadings,ReferenceBgReadings,'o')
 hold on
+x1 = linspace(min(ProcessedSensorReadings),max(ProcessedSensorReadings));
+y1 = polyval(p,x1);
 plot(x1,y1)
 hold off
+
+% scatter(ProcessedSensorReadings,ReferenceBgReadings)
+r = corrcoef(ProcessedSensorReadings, ReferenceBgReadings);
+r = r(1,2)
+
+% scatter(ReferenceBgData,PredictedBgData)
+r = corrcoef(ReferenceBgData, PredictedBgData);
+r = r(1,2)
+
+MARD = 100*mean((PredictedBgData-ReferenceBgData)./ReferenceBgData)
+RMSE = mean((ReferenceBgData-PredictedBgData).^2)^.5

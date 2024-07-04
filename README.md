@@ -17,6 +17,8 @@ This repository is setup to also act as an Arduino library.  The design rules ar
 
 The information provided here has not been evaluated by the Food and Drug Administration.  The information provided here is not intended to diagnose, treat, cure, or prevent any disease.
 
+Please feel free to reach out to noninvasiveglucometer@gmail.com with any questions, suggestiosn, comments, or concerns.
+
 ## Prizes
 To encourage some friendly competition, the following prizes are offered.  It should be noted though, that all competitors are contributing to the information available to the general public.  Knowing both what works well, and what does not, is of benefit to the public.
  - First Place $1000
@@ -56,30 +58,35 @@ All of the following requirements must be met for the competition.
      1. The software repository must use this repository's structure and continue to function as an Arduino library.
      2. The software must fit and run on an Adafruit Feather M0 Adalogger microcontroller when compiled in the example TestHarness (Total compiled size less than 262144 bytes).
      3. The software interface must implement the pure virtual methods provided in the GlucometerSensor class of this repository [Initialize, PositionSensor(GlucometerDisplay display), and GetConcentration_mg_dl]. Overloads may be implemented, but are not required, and will not be used for the competition.
-     4. The Initialize() method must contain all logic to initialize and calibrate the sensor, and must return 0 in less than 60 seconds of being called to confirm successful execution.
-     5. The PositionSensor(GlucometerDisplay display) method must contain all logic to ensure the sensor is properly positioned on the user, and must complete in less than 60 seconds of being called.
-     6. The GetConcentration_mg_dl() method must contain all logic to measure and return the user's blood glucose level in milligrams per deciliter, and must complete in less than 60 seconds of being called.
+     4. The Initialize() method must contain all logic to initialize and calibrate the sensor.
+     5. The PositionSensor(GlucometerDisplay display) method must contain all logic to ensure the sensor is properly positioned on the user.
+     6. The GetConcentration_mg_dl() method must contain all logic to measure and return the user's blood glucose level in milligrams per deciliter.
  5. Documentation
      1. All documentation must be provided under the MIT License. By entering the competition, you agree all documentation submitted can be shared publicly under the MIT License with the final results.
      2. All of the following documentation must be provided:
         1. A parts list, containing the Supplier, Part Number, Quantity Used, and Cost per Component for each component used.
         2. Dimensional drawings or STL files for any custom made mechanical components.
-        3. A wiring schematic for the sensor.
+        3. A wiring schematic for any custom made electrical components.
         4. All source code used.
     3. Your documentation does not need to be shared publicly before the final results and winners are announced. If you share it, you agree to allow competitors to use it. It is your responsibility to protect your documentation before then if that is not desired.
 
 ## How Entries Will Be Evaluated
-All entries will be evaluated using the same methods.  The exact method used will not be shared prior to the results being announced. Accuracy will be evaluated relative to a commercial blood based glucometer. Any additional information will be added to this section in the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/
+All entries will be evaluated using the same methods.  The exact method used is still TBD based on the number of submissions and number of volunteers to test the sensors.  Accuracy will be evaluated relative to a commercial blood based glucometer.   Any additional information will be added to this section in the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/
 
 ## Example Sensor
-I will be working on an example sensor while the competition is running and will update this repository as I make updates.  The example sensor will not be eligible to win any of the prizes.  You are not competing with the example.  It is just provided for reference on how things could be implemented and will show what I am working on.
+This repository is not an empty template for a competition. It also contains a noninvasive sensor, which is still in development, for reference.  It is an example of one way to approach the problem, and the succeses and failures of it will be shared. You are not competing with the example, but you can recreate it, and/or modify it, to enter in the contest.
 
 <p float="left">
   <img src="mechanical/Example/assembled.jpg" width="300" />
   <img src="mechanical/Example/disassembled.jpg" width="300" />
 </p>
 
+So far with the example sensor, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
+
 ## Current Competitors
+
+No one has joined yet.  Give it a shot!
+
 | Alias or Team Name | Individual or Team | School, Business, or Organization |
 | :--------- | :-------- | :------- |
 | None yet   | None yet  | None yet |
