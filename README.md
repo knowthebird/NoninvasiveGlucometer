@@ -83,6 +83,9 @@ This repository is not an empty template for a competition. It also contains a n
 
 So far with the example sensor, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
 
+#### YoutTube Video - Noninvasive Glucometer, Part 1, Initial Design Progress 
+[![YoutTube Video, Noninvasive Glucometer, Part 1, Initial Design Progress](https://img.youtube.com/vi/Cop63ntB-sQ/0.jpg)](https://www.youtube.com/watch?v=Cop63ntB-sQ)
+
 ## Current Competitors
 
 No one has joined yet.  Give it a shot!
