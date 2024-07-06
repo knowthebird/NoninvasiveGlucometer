@@ -13,11 +13,11 @@ This is a competition to design and build the most accurate noninvasive glucomet
 
 The motivation for the competition is to increase the information available to the general public on noninvasive sensors by evaluating the accuracy of different sensor designs and to provide all the information needed to recreate those designs freely.  This is in the hopes that in the near future there may be an affordable sensor which can reliably provide accurate readings, and reduce the pain, cost, and waste associated with typical glucometers.
 
-This repository is setup to also act as an Arduino library.  The design rules are setup such that the sensor should interface like a Wing with an Adafruit Feather.  See https://learn.adafruit.com/adafruit-feather/overview for reference.
+This repository is setup to also act as an Arduino library.  
 
 The information provided here has not been evaluated by the Food and Drug Administration.  The information provided here is not intended to diagnose, treat, cure, or prevent any disease.
 
-Please feel free to reach out to noninvasiveglucometer@gmail.com with any questions, suggestiosn, comments, or concerns.
+Please feel free to reach out to noninvasiveglucometer@gmail.com with any questions, suggestions, comments, or concerns.
 
 ## Prizes
 To encourage some friendly competition, the following prizes are offered.  It should be noted though, that all competitors are contributing to the information available to the general public.  Knowing both what works well, and what does not, is of benefit to the public.
@@ -41,32 +41,25 @@ All of the following requirements must be met for the competition.
   1. Human Interface
      1. The Sensor must not harm the user.
      2. The Sensor must estimate the user's blood glucose level in milligrams per deciliter.
-     3. The Sensor must attach to either a finger, wrist, or ear lobe.
+     3. The Sensor must attach to either a finger, wrist, hand, or ear lobe.
      4. The Sensor must not puncture the skin.
   2. SWaP-C
      1. The Sensor must fit in a USPS Small Flat Rate Box (8 5/8″ x 5 3/8″ x 1 5/8").
      2. The Sensor must weigh less than 2 lbs.
-     3. The Sensor must consume less than 10 watts power.
+     3. The Sensor must accept power from standard US wall outlet (120 VAC RMS, Type A or Type B, 15A) or provide its own power (internal battery).
      4. The Sensor components must cost less than $200 USD in total.
-  3. Electrical Interface
-     1. The Sensor must use the Adafruit Feather footprint, pinout, and female headers to allow connection to an Adafruit Feather M0 Adalogger microcontroller.
-     2. When connected to the microcontroller, the Sensor must not prevent use of Serial Communications or SD card logging.
-     3. When connected to the microcontroller, the Sensor must not prevent the microcontroller from using an Adafruit 128x64 OLED FeatherWing display or buttons.
-     4. The Sensor must not require physical modifications to the Adafruit Feather M0 Adalogger microcontroller or Adafruit 128x64 OLED FeatherWing.
-     5. The Sensor must not damage the Adafruit Feather M0 Adalogger microcontroller or Adafruit 128x64 OLED FeatherWing.
-  4. Software Interface
-     1. The software repository must use this repository's structure and continue to function as an Arduino library.
-     2. The software must fit and run on an Adafruit Feather M0 Adalogger microcontroller when compiled in the example TestHarness (Total compiled size less than 262144 bytes).
-     3. The software interface must implement the pure virtual methods provided in the GlucometerSensor class of this repository [Initialize, PositionSensor(GlucometerDisplay display), and GetConcentration_mg_dl]. Overloads may be implemented, but are not required, and will not be used for the competition.
-     4. The Initialize() method must contain all logic to initialize and calibrate the sensor.
-     5. The PositionSensor(GlucometerDisplay display) method must contain all logic to ensure the sensor is properly positioned on the user.
-     6. The GetConcentration_mg_dl() method must contain all logic to measure and return the user's blood glucose level in milligrams per deciliter.
+  3. Hardware
+     1. All hardware required to use the sensor must be provided. Note, this includes power source, sensor, processor, and display.
+     2. You are encouraged (not required) to choose components which can be easily sourced or recreated. E.g. can be 3d printed versus export controlled.
+  4. Software
+     1. The sensor must be programmed with the necessary software to operate it. I.e. the user must not be required to build or upload software to operate the sensor.
+     2. You are encouraged (not required) to write modular software that can be used as a library for future developers. E.g. this repo can be used as an Arduino library.
  5. Documentation
      1. All documentation must be provided under the MIT License. By entering the competition, you agree all documentation submitted can be shared publicly under the MIT License with the final results.
      2. All of the following documentation must be provided:
         1. A parts list, containing the Supplier, Part Number, Quantity Used, and Cost per Component for each component used.
         2. Dimensional drawings or STL files for any custom made mechanical components.
-        3. A wiring schematic for any custom made electrical components.
+        3. Wiring schematics for any custom made electrical components.
         4. All source code used.
     3. Your documentation does not need to be shared publicly before the final results and winners are announced. If you share it, you agree to allow competitors to use it. It is your responsibility to protect your documentation before then if that is not desired.
 
@@ -80,6 +73,8 @@ This repository is not an empty template for a competition. It also contains a n
   <img src="mechanical/Example/assembled.jpg" width="300" />
   <img src="mechanical/Example/disassembled.jpg" width="300" />
 </p>
+
+This example is setup such that the sensor should interface like a Wing with an Adafruit Feather.  See https://learn.adafruit.com/adafruit-feather/overview for reference. The hope is this will help to create a modular system where it is easy to make updates and test new sensors.
 
 So far with the example sensor, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
 
