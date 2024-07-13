@@ -5,7 +5,7 @@
 3. [How To Enter](#how-to-enter)
 4. [Requirements, Rules, Constraints](#requirements-rules-constraints)
 5. [How Entries Will Be Evaluated](#how-entries-will-be-evaluated)
-6. [Example Sensor](#example-sensor)
+6. [Example Sensors  (Glucosans)](#example-sensors-glucosans)
 7. [Current Competitors](#current-competitors)
 
 ## Overview
@@ -66,17 +66,39 @@ All of the following requirements must be met for the competition.
 ## How Entries Will Be Evaluated
 All entries will be evaluated using the same methods.  The exact method used is still TBD based on the number of submissions and number of volunteers to test the sensors.  Accuracy will be evaluated relative to a commercial blood based glucometer.   Any additional information will be added to this section in the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/
 
-## Example Sensor
-This repository is not an empty template for a competition. It also contains a noninvasive sensor, which is still in development, for reference.  It is an example of one way to approach the problem, and the succeses and failures of it will be shared. You are not competing with the example, but you can recreate it, and/or modify it, to enter in the contest.
+## Example Sensors (Glucosans)
+This repository is not an empty template for a competition. It also contains example Glucosans for reference. They are examples of ways to approach the problem, and the succeses and failures of them will be shared. You are not competing with the Glucosans, but you can recreate, and/or modify them, to enter in the contest.
 
-<p float="left">
-  <img src="mechanical/Example/assembled.jpg" width="300" />
-  <img src="mechanical/Example/disassembled.jpg" width="300" />
-</p>
+**Glucosan**
+ * **G**lucometer
+ * **L**ightweight
+ * **U**niversal
+ * **C**ost-effective
+ * **O**pen **S**ource
+ * **A**ccurate
+ * **N**oninvasive
 
-This example is setup such that the sensor should interface like a Wing with an Adafruit Feather.  See https://learn.adafruit.com/adafruit-feather/overview for reference. The hope is this will help to create a modular system where it is easy to make updates and test new sensors.
+| Overview | Glucosan 1 | Glucosan 2 |
+| :--------- | :-------- | :------- |
+| Image | <img src="mechanical/GLucosan1/assembled.jpg" width="300" />| Coming Soon! |
+| Initial Design   | Done | In Progress |
+| Initial Build | Done | TODO |
+| Correlations Observed   | In Progress  | TODO |
+| Emitters   | 1 x 617nm, 1 x 940nm | 1 x 670nm, 1 x 850nm, 1 x 950nm, 1 x 1300nm, 1 x 1550nm |
+| Reflectance Detectors  | Phototransistors 1 x 630nm, 1 x 940nm (Si)  | None |
+| Transmittance Detectors   | Phototransistors 1 x 630nm, 1 x 940nm (Si) | Photodiodes, 1 x 950nm (Si), 1 x 1650nm (InGaAs) |
+| Core Platform   | Adafruit Feather M0 Adalogger | Adafruit Feather RP2040 Adalogger |
+| Display   | 128x64 OLED  | 128x64 OLED |
+| SD Card   | CSV or Binary Logging | CSV or Binary Logging |
+| Wireless   | None | None |
+| IMU   | None  | 2 x Accel, 2 x Gyro |
+| Temperature   | None  | 1 x Temp |
+| Size   | TODO  | TODO |
+| Weight   | TODO  | TODO |
+| Power   | TODO  | TODO |
+| Cost   | $48.33  | $169.00 |
 
-So far with the example sensor, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
+So far with GLucosan 1, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
 
 #### YoutTube Video - Noninvasive Glucometer, Part 1, Initial Design Progress 
 [![YoutTube Video, Noninvasive Glucometer, Part 1, Initial Design Progress](https://img.youtube.com/vi/Cop63ntB-sQ/0.jpg)](https://www.youtube.com/watch?v=Cop63ntB-sQ)
