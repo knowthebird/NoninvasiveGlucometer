@@ -80,7 +80,7 @@ This repository is not an empty template for a competition. It also contains exa
 
 | Overview | Glucosan 1 | Glucosan 2 |
 | :--------- | :-------- | :------- |
-| Image | <img src="mechanical/GLucosan1/assembled.jpg" width="300" />| Coming Soon! |
+| Image | <img src="mechanical/Glucosan1/assembled.jpg" width="300" />| Coming Soon! |
 | Initial Design   | Done | In Progress |
 | Initial Build | Done | TODO |
 | Correlations Observed   | In Progress  | TODO |
