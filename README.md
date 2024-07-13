@@ -81,9 +81,12 @@ This repository is not an empty template for a competition. It also contains exa
 | Overview | Glucosan 1 | Glucosan 2 |
 | :--------- | :-------- | :------- |
 | Image | <img src="mechanical/Glucosan1/assembled.jpg" width="300" />| Coming Soon! |
-| Initial Design   | Done | In Progress |
-| Initial Build | Done | TODO |
-| Correlations Observed   | In Progress  | TODO |
+| Method | IR Spectrometry | IR Spectrometry |
+| Design | Done | In Progress |
+| Build | Done | TODO |
+| Log Data | In Progress, 1 Person, ~60 logs, 95-135mg/dl | TODO |
+| Analysis Algorithims | External, Post Processing, Linear Regression | TODO |
+| Correlations | Initial, Weak*  | TODO |
 | Emitters   | 1 x 617nm, 1 x 940nm | 1 x 670nm, 1 x 850nm, 1 x 950nm, 1 x 1300nm, 1 x 1550nm |
 | Reflectance Detectors  | Phototransistors 1 x 630nm, 1 x 940nm (Si)  | None |
 | Transmittance Detectors   | Phototransistors 1 x 630nm, 1 x 940nm (Si) | Photodiodes, 1 x 950nm (Si), 1 x 1650nm (InGaAs) |
@@ -98,7 +101,7 @@ This repository is not an empty template for a competition. It also contains exa
 | Power   | TODO  | TODO |
 | Cost   | $48.33  | $169.00 |
 
-So far with GLucosan 1, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
+*So far with Glucosan 1, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
 
 #### YoutTube Video - Noninvasive Glucometer, Part 1, Initial Design Progress 
 [![YoutTube Video, Noninvasive Glucometer, Part 1, Initial Design Progress](https://img.youtube.com/vi/Cop63ntB-sQ/0.jpg)](https://www.youtube.com/watch?v=Cop63ntB-sQ)
