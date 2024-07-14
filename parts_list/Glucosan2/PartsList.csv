@@ -4,10 +4,13 @@ U2,4650,FeatherWing 128x64 OLED,Adafruit,1,$14.95 ,$14.95 ,https://learn.adafrui
 U3,MT03-047,Photodiode  950/1650NM SMD,Marktech Optoelectronics,1,$55.36 ,$55.36 ,https://www.digikey.com/en/products/detail/marktech-optoelectronics/MT03-047/9954357
 U4,MTMD6891T38,Emmiter IR MULTI-NM 100MA TO-5-8,Marktech Optoelectronics,1,$40.68 ,$40.68 ,https://www.digikey.com/en/products/detail/marktech-optoelectronics/MTMD6891T38/4746379
 U5,MTE5115W-WRC,SWIR Emitter 1550NM TO-46 FLAT L,Marktech Optoelectronics,1,$15.32 ,$15.32 ,https://www.digikey.com/en/products/detail/marktech-optoelectronics/MTE5115W-WRC/9955415
-U6,HDC3021DEHR,Humidity Temperature Sensor Surface Mount I2C,"	
-Texas Instruments",1,$4.54 ,$4.54 ,https://www.digikey.com/en/products/detail/texas-instruments/HDC3021DEHR/17884945
+U6,HDC3021DEHR,Humidity Temperature Sensor Surface Mount I2C,Texas Instruments,1,$4.54 ,$4.54 ,https://www.digikey.com/en/products/detail/texas-instruments/HDC3021DEHR/17884945
 U7,ISM330DHCX,Accelerometer Gyroscope  I2C,ST,2,$9.60 ,$19.20 ,https://www.st.com/en/mems-and-sensors/ism330dhcx.html#overview
+RN1,TC164-FR-0710KL,10k Resistor Array,Yageo,2,$0.14 ,$0.28 ,https://www.digikey.com/en/products/detail/yageo/TC164-FR-0710KL/5950695
+C1,GCJ188R71E104KA12D,Capacitor ceramic 0.1uF 0603,Murata Electronics,1,$0.17 ,$0.17 ,https://www.digikey.com/en/products/detail/murata-electronics/GCJ188R71E104KA12D/7363221
+C2,GCJ188R71E105KA01D,Capacitor ceramic 1uF 0603,Murata Electronics,1,$0.27 ,$0.27 ,https://www.digikey.com/en/products/detail/murata-electronics/GCJ188R71E105KA01D/6606038
+C3,CGA4J1X7S1E106K125AE,Capacitor ceramic 10uF 0805,TDK Corporation,1,$0.73 ,$0.73 ,https://www.digikey.com/en/products/detail/tdk-corporation/CGA4J1X7S1E106K125AE/9744777
 S1,2940,12-pin and 16-pin Female Header Set Short,Adafruit,2,$1.50 ,$3.00 ,https://www.adafruit.com/product/2940
 S2,3002,12-pin and 16-pin Male Header Set Short,Adafruit,2,$0.50 ,$1.00 ,https://www.adafruit.com/product/3002
 NA,3096525-M ,Wire Solder  180 C ,MULTICORE / LOCTITE,As Needed,NA,NA,https://www.amazon.com/gp/product/B00DKF13JY/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
-,,Total,,,,$169.00 ,
+,,Total,,,,$170.45 ,
