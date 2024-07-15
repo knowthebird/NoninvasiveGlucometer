@@ -90,6 +90,7 @@ This repository is not an empty template for a competition. It also contains exa
 | Emitters   | 1 x 617nm, 1 x 940nm | 1 x 670nm, 1 x 850nm, 1 x 950nm, 1 x 1300nm, 1 x 1550nm |
 | Reflectance Detectors  | Phototransistors 1 x 630nm, 1 x 940nm (Si)  | None |
 | Transmittance Detectors   | Phototransistors 1 x 630nm, 1 x 940nm (Si) | Photodiodes, 1 x 950nm (Si), 1 x 1650nm (InGaAs) |
+| ADC | bypass caps, 12 bit resolution | analog front end IC, 14 bit resolution |
 | Core Platform   | Adafruit Feather M0 Adalogger | Adafruit Feather RP2040 Adalogger |
 | Display   | 128x64 OLED  | 128x64 OLED |
 | SD Card   | CSV or Binary Logging | CSV or Binary Logging |
@@ -99,7 +100,7 @@ This repository is not an empty template for a competition. It also contains exa
 | Size   | TODO  | TODO |
 | Weight   | TODO  | TODO |
 | Power   | TODO  | TODO |
-| Cost   | $48.33  | $169.00 |
+| Cost   | $48.33  | $188.31 |
 
 *So far with Glucosan 1, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
 

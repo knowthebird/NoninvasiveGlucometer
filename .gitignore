@@ -5,4 +5,4 @@
 .vscode/*
 
 # misc work area
-/workarea/*.*
+/workarea/**/*.*
