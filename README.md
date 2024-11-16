@@ -1,73 +1,24 @@
-## _An Engineering Competition to Design and Build The Most Accurate Noninvasive Glucometer_
+## Design and Build An Accurate Noninvasive Glucometer
+
 ### Table of Contents
 1. [Overview](#overview)
-2. [Prizes](#prizes)
-3. [How To Enter](#how-to-enter)
-4. [Requirements, Rules, Constraints](#requirements-rules-constraints)
-5. [How Entries Will Be Evaluated](#how-entries-will-be-evaluated)
-6. [Example Sensors  (Glucosans)](#example-sensors-glucosans)
-7. [Current Competitors](#current-competitors)
+2. [Example Sensors  (Glucosans)](#example-sensors-glucosans)
+3. [Lessons Learned](#current-competitors)
+4. [Resources and References](#resources-and-references)
 
 ## Overview
-This is a competition to design and build the most accurate noninvasive glucometer sensor. 
+This was originally to host a competition to design and build the most accurate noninvasive glucometer sensor.  Despite some interest, there were no entries.  Instead, now it currently just hosts my designs.  
 
-The motivation for the competition is to increase the information available to the general public on noninvasive sensors by evaluating the accuracy of different sensor designs and to provide all the information needed to recreate those designs freely.  This is in the hopes that in the near future there may be an affordable sensor which can reliably provide accurate readings, and reduce the pain, cost, and waste associated with typical glucometers.
+The $1750 set aside for prizes will be kept available as a fund for anyone interested in developing a noninvasive glucometer sensor. If you have an idea for a design and want to chat about it or request some support, or if you are interested in refining these designs, reach out to noninvasiveglucometer@gmail.com
 
-This repository is setup to also act as an Arduino library.  
-
+The motivation for the competition and designs is to increase the information available to the general public on noninvasive sensors by evaluating the accuracy of different sensor designs and to provide all the information needed to recreate those designs freely.  This is in the hopes that in the near future there may be an affordable sensor which can reliably provide accurate readings, and reduce the pain, cost, and waste associated with typical glucometers.
+ 
 The information provided here has not been evaluated by the Food and Drug Administration.  The information provided here is not intended to diagnose, treat, cure, or prevent any disease.
 
 Please feel free to reach out to noninvasiveglucometer@gmail.com with any questions, suggestions, comments, or concerns.
 
-## Prizes
-To encourage some friendly competition, the following prizes are offered.  It should be noted though, that all competitors are contributing to the information available to the general public.  Knowing both what works well, and what does not, is of benefit to the public.
- - First Place $1000
- - Second Place $500
- - Third Place $250
- - Everyone, TBD, Stickers maybe?
-
-## How To Enter
-Make sure you are looking at the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/. Updates to the compeition and results will be sent to the email address provided in the registration form.
-
-  1. Fill out the [Registration Form](https://forms.gle/nVtzwGYVJsYVfvGZ8) no later than November 1, 2024. You can enter as an individual or as a team.
-  2. Withing a few business days, you will receive an email notification that you have been entered into the contest. It will contain instructions for where to mail you sensor, source code, and documentation. (Will be East Coast United States).
-  3. Design and build your sensor, following the requirements below.
-  4. Mail your package per the instructions you received when you registered such that it arrives no later than December 1, 2024. Your sensor will be sent back to you after the competition is over.
-  5. The winners and leaderboard will be announced by Jan 31, 2025.
-
-## Requirements, Rules, Constraints
-All of the following requirements must be met for the competition.
-
-  1. Human Interface
-     1. The Sensor must not harm the user.
-     2. The Sensor must estimate the user's blood glucose level in milligrams per deciliter.
-     3. The Sensor must attach to either a finger, wrist, hand, or ear lobe.
-     4. The Sensor must not puncture the skin.
-  2. SWaP-C
-     1. The Sensor must fit in a USPS Small Flat Rate Box (8 5/8″ x 5 3/8″ x 1 5/8").
-     2. The Sensor must weigh less than 2 lbs.
-     3. The Sensor must accept power from standard US wall outlet (120 VAC RMS, Type A or Type B, 15A) or provide its own power (internal battery).
-     4. The Sensor components must cost less than $200 USD in total.
-  3. Hardware
-     1. All hardware required to use the sensor must be provided. Note, this includes power source, sensor, processor, and display.
-     2. You are encouraged (not required) to choose components which can be easily sourced or recreated. E.g. can be 3d printed versus export controlled.
-  4. Software
-     1. The sensor must be programmed with the necessary software to operate it. I.e. the user must not be required to build or upload software to operate the sensor.
-     2. You are encouraged (not required) to write modular software that can be used as a library for future developers. E.g. this repo can be used as an Arduino library.
- 5. Documentation
-     1. All documentation must be provided under the MIT License. By entering the competition, you agree all documentation submitted can be shared publicly under the MIT License with the final results.
-     2. All of the following documentation must be provided:
-        1. A parts list, containing the Supplier, Part Number, Quantity Used, and Cost per Component for each component used.
-        2. Dimensional drawings or STL files for any custom made mechanical components.
-        3. Wiring schematics for any custom made electrical components.
-        4. All source code used.
-    3. Your documentation does not need to be shared publicly before the final results and winners are announced. If you share it, you agree to allow competitors to use it. It is your responsibility to protect your documentation before then if that is not desired.
-
-## How Entries Will Be Evaluated
-All entries will be evaluated using the same methods.  The exact method used is still TBD based on the number of submissions and number of volunteers to test the sensors.  Accuracy will be evaluated relative to a commercial blood based glucometer.   Any additional information will be added to this section in the official repository at https://github.com/knowthebird/NoninvasiveGlucometer/
-
 ## Example Sensors (Glucosans)
-This repository is not an empty template for a competition. It also contains example Glucosans for reference. They are examples of ways to approach the problem, and the succeses and failures of them will be shared. You are not competing with the Glucosans, but you can recreate, and/or modify them, to enter in the contest.
+This repository contains example "Glucosans" for reference. These are various designs to approach the problem, and the succeses and failures of them will be shared. 
 
 **Glucosan**
  * **G**lucometer
@@ -84,9 +35,9 @@ This repository is not an empty template for a competition. It also contains exa
 | Method | IR Spectrometry | IR Spectrometry |
 | Design | Done | In Progress |
 | Build | Done | TODO |
-| Log Data | In Progress, 1 Person, ~60 logs, 95-135mg/dl | TODO |
+| Log Data | 2 Persons, ~150 logs, 76-447mg/dl | TODO |
 | Analysis Algorithims | External, Post Processing, Linear Regression | TODO |
-| Correlations | Initial, Weak*  | TODO |
+| Correlations | None / Weak  | TODO |
 | Emitters   | 1 x 617nm, 1 x 940nm | 1 x 670nm, 1 x 850nm, 1 x 950nm, 1 x 1300nm, 1 x 1550nm |
 | Reflectance Detectors  | Phototransistors 1 x 630nm, 1 x 940nm (Si)  | None |
 | Transmittance Detectors   | Phototransistors 1 x 630nm, 1 x 940nm (Si) | Photodiodes, 1 x 950nm (Si), 1 x 1650nm (InGaAs) |
@@ -102,17 +53,29 @@ This repository is not an empty template for a competition. It also contains exa
 | Power   | TODO  | TODO |
 | Cost   | $48.33  | $188.31 |
 
-*So far with Glucosan 1, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
+## Lessons Learned
 
-#### YoutTube Video - Noninvasive Glucometer, Part 1, Initial Design Progress 
+<b>Nov 15, 2024:</b> Initial tests with Glucosan 1 have showed weak to no correlation with blood glucose levels.  This is after gaining a wider range of data (see UserTwoLogData.csv) to verify outputs.  This may be due a few causes, including:
+
+* Flexibility in the finger clamp was intended to allow a better seal on the finger from ambient light.  Distance of light source to sensor significantly affects readings.  Very possible minute changes in finger position are overshadowing any blood glucose levels which could be detected. For example, reference 2 sees a ~0.25 volt difference over ~800 mg/dl shift.  Given it is a different setup, but it shows the range of values they are looking at. With Glucosan 1, in one log we can see 0.3 volt pk to pk heartbeat with a .1 V drift in the readings with a steady finger. Slightly moving the finger forward or backward in the clamp can almost immediatly exceed a .25V difference.  Possible solutions are puting the emitter and sensor in fixed positions where the clamp is not flexivble, or including IMUs on the sensor and emitter such that the distance between the two can be calculated.
+* Similarly, Nothing controlling movement, shaking, or vibrations when taking readings, or tracking them to filter against. A solution could be to use IMUs could monitor movement, or alert the user the device/finger is not stable enough to take a measurement. 
+* Lack of environmental controls.  Glucosan 1 is portable and used in a variety of environments, and could be influenced by factors like various lighting. Possible solution is to always use in the same position for tests.
+
+<b>July, 2024:</b> So far with Glucosan 1, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
+   * <b>YoutTube Video - Noninvasive Glucometer, Part 1, Initial Design Progress </b>
 [![YoutTube Video, Noninvasive Glucometer, Part 1, Initial Design Progress](https://img.youtube.com/vi/Cop63ntB-sQ/0.jpg)](https://www.youtube.com/watch?v=Cop63ntB-sQ)
 
-## Current Competitors
 
-No one has joined yet.  Give it a shot!
+## Resources and References
 
-| Alias or Team Name | Individual or Team | School, Business, or Organization |
-| :--------- | :-------- | :------- |
-| None yet   | None yet  | None yet |
+1. Hina A, Saadeh W. Noninvasive Blood Glucose Monitoring Systems Using Near-Infrared Technology-A Review. Sensors (Basel). 2022 Jun 27;22(13):4855. doi: 10.3390/s22134855. PMID: 35808352; PMCID: PMC9268854.
+   * https://www.mdpi.com/1424-8220/22/13/4855
+2. Javid B, Fotouhi-Ghazvini F, Zakeri FS. Noninvasive Optical Diagnostic Techniques for Mobile Blood Glucose and Bilirubin Monitoring. J Med Signals Sens. 2018 Jul-Sep;8(3):125-139. doi: 10.4103/jmss.JMSS_8_18. PMID: 30181961; PMCID: PMC6116315.
+   * https://pmc.ncbi.nlm.nih.gov/articles/PMC6116315/
+3. Meter, G. (2015, August 27). Open Source Non-Invasive Glucose Meter - Expensive, Wasteful, and Annoying. YouTube
+   * https://youtu.be/2np7Va2ASF0?si=skVRlG87lIETs9TL
+4. Bhuyan, Muhibul. (2020). Design and Implementation of an NIR-Technique Based Non-Invasive Glucometer using Microcontroller. 20. 
+   * https://tinyurl.com/j6b6d8wd
+
 
 
