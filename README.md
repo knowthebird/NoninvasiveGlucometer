@@ -3,7 +3,7 @@
 ### Table of Contents
 1. [Overview](#overview)
 2. [Example Sensors  (Glucosans)](#example-sensors-glucosans)
-3. [Lessons Learned](#current-competitors)
+3. [Testing Notes](#testing-notes)
 4. [Resources and References](#resources-and-references)
 
 ## Overview
@@ -37,7 +37,7 @@ This repository contains example "Glucosans" for reference. These are various de
 | Build | Done | TODO |
 | Log Data | 2 Persons, ~150 logs, 76-447mg/dl | TODO |
 | Analysis Algorithims | External, Post Processing, Linear Regression | TODO |
-| Correlations | None / Weak  | TODO |
+| Correlations | Weak to None  | TODO |
 | Emitters   | 1 x 617nm, 1 x 940nm | 1 x 670nm, 1 x 850nm, 1 x 950nm, 1 x 1300nm, 1 x 1550nm |
 | Reflectance Detectors  | Phototransistors 1 x 630nm, 1 x 940nm (Si)  | None |
 | Transmittance Detectors   | Phototransistors 1 x 630nm, 1 x 940nm (Si) | Photodiodes, 1 x 950nm (Si), 1 x 1650nm (InGaAs) |
@@ -53,12 +53,13 @@ This repository contains example "Glucosans" for reference. These are various de
 | Power   | TODO  | TODO |
 | Cost   | $48.33  | $188.31 |
 
-## Lessons Learned
+## Testing Notes
 
-<b>Nov 15, 2024:</b> Initial tests with Glucosan 1 have showed weak to no correlation with blood glucose levels.  This is after gaining a wider range of data (see UserTwoLogData.csv) to verify outputs.  This may be due a few causes, including:
+<b>Nov 17, 2024:</b> Additional logs were taken with Glucosan 1 over a wide range of blood glucose levels. Looking closer at the log data showed what appeared to be corrupt signal readings, with a single sensor log showing multiple samples of the same photoplethysmogram (PPG) waveform slightly shifted. Because they were clearly shifted, but otherwise near identical signals representing the same PPG data, it does not look like an aliasing artifact from outside noise.  This can be seen looking at the readings from all sensors (regardless of LED state).  In some logs the corruption appears to "toggle" off and on, where the separation between duplicate signals widens.  My initial suspician is there is a hardware failure causing coupling between the sensors. It was not identified until reviewing a large set of samples. This should be kept in mind when referring to data from logs 85 to 174.  See log data folder for more details.
 
-* Flexibility in the finger clamp was intended to allow a better seal on the finger from ambient light.  Distance of light source to sensor significantly affects readings.  Very possible minute changes in finger position are overshadowing any blood glucose levels which could be detected. For example, reference 2 sees a ~0.25 volt difference over ~800 mg/dl shift.  Given it is a different setup, but it shows the range of values they are looking at. With Glucosan 1, in one log we can see 0.3 volt pk to pk heartbeat with a .1 V drift in the readings with a steady finger. Slightly moving the finger forward or backward in the clamp can almost immediatly exceed a .25V difference.  Possible solutions are puting the emitter and sensor in fixed positions where the clamp is not flexivble, or including IMUs on the sensor and emitter such that the distance between the two can be calculated.
-* Similarly, Nothing controlling movement, shaking, or vibrations when taking readings, or tracking them to filter against. A solution could be to use IMUs could monitor movement, or alert the user the device/finger is not stable enough to take a measurement. 
+Initial tests with Glucosan 1 have showed weak to no correlation with blood glucose levels.  This is after gaining a wider range of data (see UserTwoLogData.csv) to verify outputs.  This may be due a few causes, including:
+* Flexibility in the finger clamp was intended to allow a better seal on the finger from ambient light.  Distance of light source to sensor significantly affects readings.  Very possible changes in finger (emitter/sensor) positions are overshadowing any blood glucose levels changes detected by the sensor. Slightly moving the finger forward or backward in the clamp can almost immediatly exceed a .25V difference.  Possible solutions are puting the emitter and sensor in fixed positions where the clamp is not flexible, or including IMUs on the sensor and emitter such that the distance between the two can be calculated.
+* Similarly, Nothing controlling movement, shaking, or vibrations when taking readings, or tracking them to filter against. A solution could be to use IMUs could monitor movement, or alert the user the device/finger is not stable enough to take a valid measurement. 
 * Lack of environmental controls.  Glucosan 1 is portable and used in a variety of environments, and could be influenced by factors like various lighting. Possible solution is to always use in the same position for tests.
 
 <b>July, 2024:</b> So far with Glucosan 1, only weak correlations have been observed.  This has relatively little significance at this point though, because it has only logged a very small amount of data with a relatively small range of blood glucose levels.  Getting a large set of samples, with a range in blood glucose levels, to both train and test models, is a challenge for any new sensor developemnt.  Without a range of data, initial results, such as MARD or RMSE, can be very misleading.
@@ -76,6 +77,9 @@ This repository contains example "Glucosans" for reference. These are various de
    * https://youtu.be/2np7Va2ASF0?si=skVRlG87lIETs9TL
 4. Bhuyan, Muhibul. (2020). Design and Implementation of an NIR-Technique Based Non-Invasive Glucometer using Microcontroller. 20. 
    * https://tinyurl.com/j6b6d8wd
-
+5. Beckers, I. (n.d.). Measuring glucose concentration nir absorption spectroscopy. Oxford Instruments. 
+   * https://andor.oxinst.com/learning/view/article/spectral-response-of-glucose 
+6. Naresh M, Nagaraju VS, Kollem S, Kumar J, Peddakrishna S. Non-invasive glucose prediction and classification using NIR technology with machine learning. Heliyon. 2024 Mar 28;10(7):e28720. doi: 10.1016/j.heliyon.2024.e28720. PMID: 38601525; PMCID: PMC11004754.
+   * https://www.sciencedirect.com/science/article/pii/S2405844024047510
 
 
