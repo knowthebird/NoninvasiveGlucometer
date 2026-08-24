@@ -2,7 +2,9 @@
 
 This repository documents an open hardware/software experiment in noninvasive blood-glucose sensing using optical measurements. It includes embedded data acquisition, electronics, mechanical designs, sensor logs, analysis scripts, and the design history of multiple prototype concepts.
 
-The most important result so far is also a negative one: **the first prototype did not demonstrate a useful correlation between its optical measurements and reference blood-glucose values.** The repository preserves the design, raw data, observed failure modes, and follow-on ideas so the experiment can be inspected and reproduced rather than presenting an unsuccessful hypothesis as a successful product.
+The first prototype was built and tested rather than stopping at a concept. The most important result is also a negative one: **Glucosan 1 did not demonstrate a useful correlation between its optical measurements and reference blood-glucose values.** The repository preserves the hardware, software, raw data, analysis, observed failure modes, and follow-on design work so the experiment can be inspected rather than presenting an unsuccessful hypothesis as a successful product.
+
+<img src="mechanical/Glucosan1/assembled.jpg" width="500" />
 
 > **Not a medical device.** The designs and data in this repository have not been evaluated or approved by the FDA and are not intended to diagnose, treat, cure, prevent, or manage any disease or medical condition.
 
@@ -13,7 +15,7 @@ The project spans several disciplines:
 - embedded C/C++ sensor acquisition and data logging
 - optical emitter/detector selection
 - analog and digital electronics
-- PCB and schematic development
+- schematic and electronics development
 - 3D-printed mechanical fixtures
 - repeatable sensor logging
 - MATLAB/post-processing analysis
@@ -22,11 +24,11 @@ The project spans several disciplines:
 Repository areas include:
 
 - [`src/`](src/) — embedded software/library source
-- [`electrical/`](electrical/) — schematics and PCB-related work
+- [`electrical/`](electrical/) — electrical schematics and follow-on design work
 - [`mechanical/`](mechanical/) — mechanical designs and prototype images
 - [`log_data/`](log_data/) — experimental sensor/reference measurements and analysis
 - [`parts_list/`](parts_list/) — component information
-- [`examples/`](examples/) — example usage
+- [`examples/`](examples/) — development and test-harness examples
 
 ## Experimental Data and Consent
 
@@ -49,14 +51,12 @@ Glucosan 1 used infrared/visible optical sensing to investigate whether a low-co
 | ADC | 12-bit acquisition |
 | Display | 128x64 OLED |
 | Logging | CSV or binary to SD card |
-| Published data | roughly 150 logs across two participants |
-| Analysis | external/post-processing, including linear regression |
+| Published data | more than 150 log sessions across two participants |
+| Analysis | post-processing, correlation analysis, filtering, and polynomial fitting |
 | Observed correlation | weak to none |
-| Approximate prototype component cost | $48.33 |
+| Listed prototype component cost | $48.33 |
 
-A photo of the assembled prototype is available here:
-
-<img src="mechanical/Glucosan1/assembled.jpg" width="400" />
+The embedded acquisition code configures 12-bit ADC reads, cycles the 617 nm and 940 nm emitters, samples four optical channels, and supports CSV, binary, and serial logging. Binary records include a CRC-8 for integrity checking.
 
 ## What Failed, and What Was Learned
 
@@ -92,33 +92,27 @@ The second design was intended to address limitations observed in the first prot
 | --- | --- |
 | Method | IR spectrometry / optical sensing |
 | Core platform | Adafruit Feather RP2040 Adalogger |
-| Emitters | 670, 850, 950, 1300, and 1550 nm |
-| Detector concept | silicon and InGaAs photodiodes |
-| ADC / front end | analog front-end IC, 14-bit acquisition |
-| Motion sensing | two accelerometers and two gyroscopes planned |
-| Temperature | temperature sensing planned |
-| Logging | CSV or binary to SD card |
-| Approximate listed component cost | $188.31 |
+| Emitters | multi-wavelength IR/SWIR emitters, including 1550 nm |
+| Detector concept | 950/1650 nm photodiode component |
+| Optical front end | Analog Devices ADPD4001 multimodal optical AFE |
+| Motion sensing | two combined accelerometer/gyroscope devices planned |
+| Environmental sensing | humidity/temperature sensor planned |
+| Logging | CSV or binary to SD card planned |
+| Current listed component cost | $190.33, excluding as-needed consumables |
 | Status | design in progress / not validated |
 
-The second concept should be understood as follow-on engineering work, not as a validated sensor.
+The second concept should be understood as follow-on engineering work, not as a validated sensor. The repository currently contains detector-side schematic work and a component list rather than a completed Glucosan 2 build.
 
-## Data Layout
+## Data and Analysis Layout
 
-The Glucosan 1 dataset is under:
+The Glucosan 1 dataset is under [`log_data/Glucosan1/`](log_data/Glucosan1/):
 
-```text
-log_data/Glucosan1/
-├── analysis/
-└── data/
-```
-
-The data directory includes:
-
-- `Index.csv` — maps groups of sensor logs to participant number and pre/post reference measurements
+- [`data/Index.csv`](log_data/Glucosan1/data/Index.csv) — maps groups of sensor logs to participant number and pre/post reference measurements
 - `InitialLogData.csv` / `.mat` — large sensor dataset
 - `UserTwoLogData.csv` — additional dataset used to broaden the observed glucose range
-- `AddLogs.m` — MATLAB data-processing support
+- [`analysis/EstimateBG.m`](log_data/Glucosan1/analysis/EstimateBG.m) — filtering, polynomial fitting, correlation, MARD, and RMSE exploration
+- [`analysis/ResultsOverview.m`](log_data/Glucosan1/analysis/ResultsOverview.m) — correlation overview across sensor/finger configurations
+- [`analysis/Clarke_EGA.png`](log_data/Glucosan1/analysis/Clarke_EGA.png) — retained analysis output
 
 The raw files are intentionally retained so analysis can be checked against the underlying measurements.
 
@@ -138,7 +132,7 @@ That cycle is more useful than reporting attractive accuracy metrics from an ina
 
 The repository was originally created around an open design competition intended to encourage reproducible noninvasive-glucose experiments. The competition did not receive entries, so the repository evolved into a record of the prototype designs and experimental results.
 
-An earlier project fund of $1,750 was set aside to support work in this area. For questions about the historical project or the designs, contact `noninvasiveglucometer@gmail.com`.
+A $1,750 project fund was originally set aside to encourage work in this area. For questions about the historical project or the designs, contact `noninvasiveglucometer@gmail.com`.
 
 ## Video
 
