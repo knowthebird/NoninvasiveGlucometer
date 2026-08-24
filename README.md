@@ -44,13 +44,17 @@ Glucosan 1 used infrared/visible optical sensing to investigate whether a low-co
 
 | Item | Glucosan 1 |
 | --- | --- |
-| Method | IR/visible optical sensing |
-| Core platform | Adafruit Feather M0 Adalogger |
-| Emitters | 617 nm and 940 nm |
-| Detectors | 630 nm and 940 nm phototransistors |
-| ADC | 12-bit acquisition |
+| Method | IR Spectrometry |
+| Core Platform | Adafruit Feather M0 Adalogger |
+| Emitters | 1 x 617nm, 1 x 940nm |
+| Reflectance Detectors | Phototransistors 1 x 630nm, 1 x 940nm (Si) |
+| Transmittance Detectors | Phototransistors 1 x 630nm, 1 x 940nm (Si) |
+| ADC | bypass caps, 12 bit resolution |
 | Display | 128x64 OLED |
-| Logging | CSV or binary to SD card |
+| SD Card | CSV or Binary Logging |
+| Wireless | None |
+| IMU | None |
+| Temperature | None |
 | Published data | more than 150 log sessions across two participants |
 | Analysis | post-processing, correlation analysis, filtering, and polynomial fitting |
 | Observed correlation | weak to none |
@@ -90,14 +94,17 @@ The second design was intended to address limitations observed in the first prot
 
 | Item | Glucosan 2 concept |
 | --- | --- |
-| Method | IR spectrometry / optical sensing |
-| Core platform | Adafruit Feather RP2040 Adalogger |
-| Emitters | multi-wavelength IR/SWIR emitters, including 1550 nm |
-| Detector concept | 950/1650 nm photodiode component |
-| Optical front end | Analog Devices ADPD4001 multimodal optical AFE |
-| Motion sensing | two combined accelerometer/gyroscope devices planned |
-| Environmental sensing | humidity/temperature sensor planned |
-| Logging | CSV or binary to SD card planned |
+| Method | IR Spectrometry |
+| Core Platform | Adafruit Feather RP2040 Adalogger |
+| Emitters | 1 x 670nm, 1 x 850nm, 1 x 950nm, 1 x 1300nm, 1 x 1550nm |
+| Reflectance Detectors | None |
+| Transmittance Detectors | Photodiodes, 1 x 950nm (Si), 1 x 1650nm (InGaAs) |
+| ADC | analog front end IC, 14 bit resolution |
+| Display | 128x64 OLED |
+| SD Card | CSV or Binary Logging |
+| Wireless | None |
+| IMU | 2 x Accel, 2 x Gyro |
+| Temperature | 1 x Temp |
 | Current listed component cost | $190.33, excluding as-needed consumables |
 | Status | design in progress / not validated |
 
